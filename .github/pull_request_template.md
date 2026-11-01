@@ -1,4 +1,9 @@
 <!--
+  Synced from UAMS-Web/uams-claude-skills: shared/.claude/skills/writing-pull-requests/templates/pull_request_template.md
+  Edit it there, not here; the next sync overwrites this copy.
+  Delivered to this repository through the profile(s): core.
+-->
+<!--
   Skeleton only: .claude/skills/writing-pull-requests/SKILL.md is the source of truth.
   Delete the sections you don't need, and delete these comments before submitting.
 
@@ -7,8 +12,10 @@
   prefix, and no internal-process references (no `Wave N`, `Group X`, `Iteration N`, batch or
   merge-order hints). Correct acronym casing; "and", never "&".
 
-  Before opening: open as a DRAFT unless the branch is ready to validate, and flip it to
-  ready when `composer ci` is green. Docs-only PRs open ready.
+  Before opening: in a public repository, open this as a draft and let its remote checks run,
+  then mark it ready once every one is green. Elsewhere, run the repository's spell check if
+  you touched prose or identifiers, and run its gate. Never add an attribution footer or a
+  session link to the body.
 
   Closing multiple issues? Repeat the keyword: `Closes #1, Closes #2.` A comma-separated
   list links only the FIRST issue.
@@ -29,7 +36,7 @@ Closes #
 
 ## Files
 
-<!-- - **edit** [`path/to/file.php`](https://github.com/UAMS-Web/aether-multisite-forms/blob/<branch>/path/to/file.php): reason. -->
+<!-- - **edit** [`path/to/file`](https://github.com/OWNER/REPO/blob/BRANCH/path/to/file): reason. -->
 
 ## Verification
 
@@ -37,8 +44,8 @@ Closes #
 
 ## Companion PRs
 
-<!-- Sibling PRs in other repositories, such as the host application. When this depends on
-     one, state the merge order. -->
+<!-- Sibling PRs in other repositories. When this depends on a companion, state the merge
+     order and which side breaks if the order is ignored. -->
 
 ## Out of scope
 
@@ -49,4 +56,4 @@ Closes #
 <!-- Mandatory, and always last. `- [x]` = verified locally; `- [ ]` = deferred to CI, review,
      or staging. Name the command, URL, or observation. -->
 
-- [ ] `composer ci` green.
+- [ ] The repository's gate passed on the head commit.
