@@ -42,7 +42,7 @@ error in a `ModifierException`, and `NodeProcessor::runModifier()` rethrows **on
 Antlers then emits the raw input verbatim: a throw inside a sanitizer is a stored-XSS
 **fail-open**, not a 500. Verified in `uams-statamic` on `sanitize_table_cell`, which emitted
 `<script>alert(document.cookie)</script>` once its HTMLPurifier definition cache was corrupt
-(`UAMS-Web/uams-statamic#1853`).
+(`UAMS-Web/uams-statamic-archive#1853`).
 
 **Whether a throw fails open or 500s turns on `Exception` vs `Error`**, re-verified 2026-10-02
 against `statamic/cms` v6.35.0 (the build `wordpress-importer` pins, `UAMS-Web/wordpress-importer-archive#1290`):
@@ -59,7 +59,7 @@ finding:
 - **`Error` family → a real 500.** `TypeError`, `ParseError` and `DivisionByZeroError` extend
   `Error`, so they escape `catch (Exception)`, are never wrapped, and propagate. `strip_tags()` on
   an array (which Antlers' truthy-array `?:` / `??` will happily feed it) raises a `TypeError`
-  on PHP 8, so it 500s rather than leaking; that is `UAMS-Web/uams-statamic#1883`, whose four
+  on PHP 8, so it 500s rather than leaking; that is `UAMS-Web/uams-statamic-archive#1883`, whose four
   entries returned a 500 on every page. Loud, but still a sanitizer that did not sanitize.
 
 So when auditing a sanitizer, ask *"what makes this throw, and with which class"* alongside *"what
