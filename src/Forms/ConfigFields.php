@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Forms;
+namespace UAMSWeb\Aether\Forms\Multisite\Forms;
 
 use Statamic\Facades\Form;
-use UAMSWeb\MultisiteForms\Access\AccessibleSites;
-use UAMSWeb\MultisiteForms\Sites\ConfiguredSites;
+use UAMSWeb\Aether\Forms\Multisite\Access\AccessibleSites;
+use UAMSWeb\Aether\Forms\Multisite\Sites\ConfiguredSites;
 
 /**
  * The Sites section the add-on adds to every form's settings screen.

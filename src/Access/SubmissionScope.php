@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Access;
+namespace UAMSWeb\Aether\Forms\Multisite\Access;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
@@ -30,7 +30,7 @@ use Statamic\Facades\User;
 use Statamic\Forms\Form;
 use Statamic\Query\Builder;
 use Statamic\Query\EloquentQueryBuilder;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
 
 /**
  * Scopes Control Panel submission reads to the sites the user can access (#78).

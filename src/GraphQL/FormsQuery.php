@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\GraphQL;
+namespace UAMSWeb\Aether\Forms\Multisite\GraphQL;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
@@ -10,8 +10,8 @@ use Illuminate\Validation\Rule;
 use Statamic\Facades\GraphQL;
 use Statamic\Forms\Form;
 use Statamic\GraphQL\Queries\FormsQuery as CoreFormsQuery;
-use UAMSWeb\MultisiteForms\Access\SiteAccess;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Access\SiteAccess;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
 
 /**
  * The GraphQL `forms` query, with an optional `site` argument (#80).

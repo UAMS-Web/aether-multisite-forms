@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Commands;
+namespace UAMSWeb\Aether\Forms\Multisite\Commands;
 
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
@@ -17,8 +17,8 @@ use Statamic\Forms\Submission;
 use Statamic\Query\Builder;
 use Statamic\Query\EloquentQueryBuilder;
 use Statamic\Sites\Site as SiteObject;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
-use UAMSWeb\MultisiteForms\Forms\RecordSubmitSite;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\RecordSubmitSite;
 
 /**
  * Records a site on a form's unattributed submissions (#81).

@@ -29,7 +29,7 @@ Closes #
 
 ## Files
 
-<!-- - **edit** [`path/to/file.php`](https://github.com/UAMS-Web/statamic-multisite-forms/blob/<branch>/path/to/file.php): reason. -->
+<!-- - **edit** [`path/to/file.php`](https://github.com/UAMS-Web/aether-multisite-forms/blob/<branch>/path/to/file.php): reason. -->
 
 ## Verification
 

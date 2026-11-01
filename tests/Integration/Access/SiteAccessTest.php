@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\File;
-use UAMSWeb\MultisiteForms\Access\SiteAccess;
+use UAMSWeb\Aether\Forms\Multisite\Access\SiteAccess;
 
 /**
  * Site access is asked of core's site policy, and a handle naming no configured

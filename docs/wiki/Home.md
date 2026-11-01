@@ -1,10 +1,10 @@
 Multisite Forms makes Statamic forms per-site in a multisite install. A form can be shown on some sites only, give each site its own title, email and storage choice, and keep each site's submissions apart in the Control Panel.
 
-This wiki holds the documentation: a walkthrough, task guides by role, the reference, and troubleshooting. The [README](https://github.com/UAMS-Web/statamic-multisite-forms#readme) keeps an overview, the requirements and installation.
+This wiki holds the documentation: a walkthrough, task guides by role, the reference, and troubleshooting. The [README](https://github.com/UAMS-Web/aether-multisite-forms#readme) keeps an overview, the requirements and installation.
 
 ## Getting started
 
-- [Installation (README)](https://github.com/UAMS-Web/statamic-multisite-forms#installation): add the package to a multisite install.
+- [Installation (README)](https://github.com/UAMS-Web/aether-multisite-forms#installation): add the package to a multisite install.
 - [Your first multisite form](Your-first-multisite-form.md): assign a form to one site, then two, and see each site's submissions and recipients.
 
 ## Guides for site builders
@@ -40,5 +40,5 @@ This wiki holds the documentation: a walkthrough, task guides by role, the refer
 ## Project
 
 - [Project](Project.md): reporting a problem, how releases work, development notes and the license.
-- [Report a problem](https://github.com/UAMS-Web/statamic-multisite-forms/issues)
-- [Releases](https://github.com/UAMS-Web/statamic-multisite-forms/releases)
+- [Report a problem](https://github.com/UAMS-Web/aether-multisite-forms/issues)
+- [Releases](https://github.com/UAMS-Web/aether-multisite-forms/releases)

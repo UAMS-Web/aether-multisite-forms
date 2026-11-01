@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Actions;
+namespace UAMSWeb\Aether\Forms\Multisite\Actions;
 
 use Illuminate\Support\Facades\Gate;
 use Statamic\Actions\DuplicateForm as CoreDuplicateForm;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Exceptions;
+namespace UAMSWeb\Aether\Forms\Multisite\Exceptions;
 
 use LogicException;
 

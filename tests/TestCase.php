@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests;
 
 use Illuminate\Foundation\Application;
 use Statamic\Testing\AddonTestCase;
-use UAMSWeb\MultisiteForms\ServiceProvider;
+use UAMSWeb\Aether\Forms\Multisite\ServiceProvider;
 
 /**
  * Base class for the Integration suite: boots a minimal Statamic through

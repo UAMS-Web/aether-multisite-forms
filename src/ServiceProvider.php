@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms;
+namespace UAMSWeb\Aether\Forms\Multisite;
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
@@ -11,18 +11,18 @@ use Statamic\Events\FormCreating;
 use Statamic\Events\FormSubmitted;
 use Statamic\Events\SubmissionCreating;
 use Statamic\Providers\AddonServiceProvider;
-use UAMSWeb\MultisiteForms\Access\CreatorSites;
-use UAMSWeb\MultisiteForms\Access\FormGate;
-use UAMSWeb\MultisiteForms\Access\SubmissionScope;
-use UAMSWeb\MultisiteForms\Api\FormsController;
-use UAMSWeb\MultisiteForms\Forms\ConfigFields;
-use UAMSWeb\MultisiteForms\Forms\NotAssigned;
-use UAMSWeb\MultisiteForms\Forms\RecordSubmitSite;
-use UAMSWeb\MultisiteForms\GraphQL\FormsQuery;
-use UAMSWeb\MultisiteForms\Http\BlueprintBreadcrumbs;
-use UAMSWeb\MultisiteForms\Http\BlueprintListings;
-use UAMSWeb\MultisiteForms\Http\Middleware\AuthorizeFormBlueprint;
-use UAMSWeb\MultisiteForms\Http\SubmitGate;
+use UAMSWeb\Aether\Forms\Multisite\Access\CreatorSites;
+use UAMSWeb\Aether\Forms\Multisite\Access\FormGate;
+use UAMSWeb\Aether\Forms\Multisite\Access\SubmissionScope;
+use UAMSWeb\Aether\Forms\Multisite\Api\FormsController;
+use UAMSWeb\Aether\Forms\Multisite\Forms\ConfigFields;
+use UAMSWeb\Aether\Forms\Multisite\Forms\NotAssigned;
+use UAMSWeb\Aether\Forms\Multisite\Forms\RecordSubmitSite;
+use UAMSWeb\Aether\Forms\Multisite\GraphQL\FormsQuery;
+use UAMSWeb\Aether\Forms\Multisite\Http\BlueprintBreadcrumbs;
+use UAMSWeb\Aether\Forms\Multisite\Http\BlueprintListings;
+use UAMSWeb\Aether\Forms\Multisite\Http\Middleware\AuthorizeFormBlueprint;
+use UAMSWeb\Aether\Forms\Multisite\Http\SubmitGate;
 
 /**
  * Service provider for the Multisite Forms add-on.

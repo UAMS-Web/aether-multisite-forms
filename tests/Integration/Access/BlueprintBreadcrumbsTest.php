@@ -14,8 +14,8 @@ use Statamic\Facades\Form as FormFacade;
 use Statamic\Forms\Form;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Symfony\Component\HttpFoundation\Response;
-use UAMSWeb\MultisiteForms\Http\BlueprintBreadcrumbs;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Http\BlueprintBreadcrumbs;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * The form fields editor's breadcrumb links only the forms whose editor the user

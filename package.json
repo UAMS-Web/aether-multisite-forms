@@ -1,5 +1,5 @@
 {
-    "name": "statamic-multisite-forms",
+    "name": "aether-multisite-forms",
     "private": true,
     "type": "module",
     "engines": {

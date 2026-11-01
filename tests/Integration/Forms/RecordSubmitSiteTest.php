@@ -14,8 +14,8 @@ use Statamic\Facades\Stache;
 use Statamic\Forms\Form;
 use Statamic\Forms\SendEmails;
 use Statamic\Stache\Stores\Store;
-use UAMSWeb\MultisiteForms\Forms\RecordSubmitSite;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Forms\RecordSubmitSite;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * A submission made through core's submit route records the submit site under

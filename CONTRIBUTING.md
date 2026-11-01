@@ -1,4 +1,4 @@
-# Contributing to statamic-multisite-forms
+# Contributing to aether-multisite-forms
 
 <!-- uams-claude-skills:begin -->
 ## Branches and environments

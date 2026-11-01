@@ -37,9 +37,9 @@ use Statamic\Stache\Query\SubmissionQueryBuilder as StacheSubmissionQueryBuilder
 use Statamic\Stache\Stores\Store;
 use Statamic\Statamic;
 use Statamic\Tags\FluentTag;
-use UAMSWeb\MultisiteForms\Access\SiteAccess;
-use UAMSWeb\MultisiteForms\Access\SubmissionScope;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Access\SiteAccess;
+use UAMSWeb\Aether\Forms\Multisite\Access\SubmissionScope;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * A Control Panel user reads the submissions of the sites they can access, and

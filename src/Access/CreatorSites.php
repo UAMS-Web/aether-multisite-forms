@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Access;
+namespace UAMSWeb\Aether\Forms\Multisite\Access;
 
 use Statamic\Events\FormCreating;
 use Statamic\Facades\User;
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
 
 /**
  * Assigns a new form to the sites of a creator who cannot access every site (#79).

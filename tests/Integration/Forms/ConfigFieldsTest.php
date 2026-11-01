@@ -14,10 +14,10 @@ use Statamic\Forms\Tags;
 use Statamic\Http\Controllers\CP\Forms\FormsController;
 use Statamic\Sites\Site as SiteObject;
 use Statamic\Tags\Loader;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
-use UAMSWeb\MultisiteForms\Forms\ConfigFields;
-use UAMSWeb\MultisiteForms\Forms\FormResolver;
-use UAMSWeb\MultisiteForms\Forms\Overrides;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\ConfigFields;
+use UAMSWeb\Aether\Forms\Multisite\Forms\FormResolver;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Overrides;
 
 /**
  * The form settings screen gains a Sites section whose selection is saved to the

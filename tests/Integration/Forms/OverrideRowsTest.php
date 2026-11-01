@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Statamic\Facades\Site;
-use UAMSWeb\MultisiteForms\Forms\OverrideRows;
+use UAMSWeb\Aether\Forms\Multisite\Forms\OverrideRows;
 
 /**
  * The rule behind the site overrides editor: each row names a configured site

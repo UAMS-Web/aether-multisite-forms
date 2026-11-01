@@ -8,7 +8,7 @@ use Statamic\Auth\File\User as UserObject;
 use Statamic\Contracts\Forms\Form as FormContract;
 use Statamic\Facades\Form as FormFacade;
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Access\FormGate;
+use UAMSWeb\Aether\Forms\Multisite\Access\FormGate;
 
 /**
  * Control Panel users are denied the forms of sites they cannot access, and

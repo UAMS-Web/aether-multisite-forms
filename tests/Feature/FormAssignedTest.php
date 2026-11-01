@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Routing\RouteCollection;
@@ -21,7 +21,7 @@ use Tests\TestCase;
  * host's own kernel and view finder. Form files and the views go to a temporary
  * directory, so the host's own content is never written.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/FormAssignedTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/FormAssignedTest.php
  */
 final class FormAssignedTest extends TestCase
 {
@@ -125,7 +125,7 @@ final class FormAssignedTest extends TestCase
     public function test_the_check_does_not_abort_under_404(): void
     {
         // Answer an unassigned form with a 404, and save a form assigned to en
-        config(['statamic-multisite-forms.not_assigned' => '404']);
+        config(['aether-multisite-forms.not_assigned' => '404']);
         $this->makeForm(['en']);
 
         // Expect the es page to render with the content hidden

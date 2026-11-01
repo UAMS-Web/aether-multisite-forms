@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
 
 /**
  * Hooks registered on core's Form, which core files under the class they were

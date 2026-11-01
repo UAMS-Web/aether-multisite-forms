@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Http;
+namespace UAMSWeb\Aether\Forms\Multisite\Http;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Events\PreparingResponse;
@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Event;
 use Inertia\Response as InertiaResponse;
 use Statamic\Http\Controllers\CP\Fields\BlueprintController;
-use UAMSWeb\MultisiteForms\Access\RefusedFormEditors;
+use UAMSWeb\Aether\Forms\Multisite\Access\RefusedFormEditors;
 
 /**
  * Keeps forms the user may not open out of the blueprints index and the

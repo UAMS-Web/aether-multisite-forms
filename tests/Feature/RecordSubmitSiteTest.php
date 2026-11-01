@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Illuminate\Support\Facades\File;
 use Statamic\Facades\Form;
@@ -18,7 +18,7 @@ use Tests\TestCase;
  * lands on disk. Form files and submissions go to a temporary directory, so the
  * host's own content is never written.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/RecordSubmitSiteTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/RecordSubmitSiteTest.php
  */
 final class RecordSubmitSiteTest extends TestCase
 {

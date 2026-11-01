@@ -20,9 +20,9 @@ use Statamic\Sites\Site as SiteObject;
 use Statamic\Statamic;
 use Statamic\Tags\FluentTag;
 use Statamic\Tags\Loader;
-use UAMSWeb\MultisiteForms\Forms\NotAssigned;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
-use UAMSWeb\MultisiteForms\Tags\FormTags;
+use UAMSWeb\Aether\Forms\Multisite\Forms\NotAssigned;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Tags\FormTags;
 
 /**
  * The `{{ form }}` tags render a form for the page's site, and follow the
@@ -381,7 +381,7 @@ it('refuses a not_assigned value that is not a setting', function (mixed $value)
     'an unknown word' => ['hide'],
     'a list' => [['empty']],
     'null' => [null],
-])->throws(InvalidArgumentException::class, 'statamic-multisite-forms.not_assigned');
+])->throws(InvalidArgumentException::class, 'aether-multisite-forms.not_assigned');
 
 /**
  * Load `form:assigned` as Antlers does: as a single tag or, with content, a pair.

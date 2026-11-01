@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Log\Events\MessageLogged;
@@ -25,7 +25,7 @@ use Tests\TestCase;
  * error. Form files and the view go to a temporary directory, so the host's own
  * content is never written.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/FormTagsTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/FormTagsTest.php
  */
 final class FormTagsTest extends TestCase
 {
@@ -123,7 +123,7 @@ final class FormTagsTest extends TestCase
     public function test_an_unassigned_form_answers_404_under_404(): void
     {
         // Answer an unassigned form with a 404
-        config(['statamic-multisite-forms.not_assigned' => '404']);
+        config(['aether-multisite-forms.not_assigned' => '404']);
         $this->withoutVite();
         // Save a form assigned to en
         $this->makeForm(['en']);
@@ -144,7 +144,7 @@ final class FormTagsTest extends TestCase
     public function test_a_404_layout_that_renders_the_form_does_not_abort_again(): void
     {
         // Answer an unassigned form with a 404
-        config(['statamic-multisite-forms.not_assigned' => '404']);
+        config(['aether-multisite-forms.not_assigned' => '404']);
         // Write an error layout that renders the same form
         File::ensureDirectoryExists($this->directory.'/views/errors');
         File::put(

@@ -17,8 +17,8 @@ use Statamic\Facades\Form as FormFacade;
 use Statamic\Forms\Form;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Symfony\Component\HttpFoundation\Response;
-use UAMSWeb\MultisiteForms\Http\BlueprintListings;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Http\BlueprintListings;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * The blueprints index and the command palette list only the forms whose fields

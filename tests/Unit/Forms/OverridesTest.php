@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Forms\Overrides;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Overrides;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
 
 /**
  * A site's `site_overrides` row supplies its title, email and store, and every

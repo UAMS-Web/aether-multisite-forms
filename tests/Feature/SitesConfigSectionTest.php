@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Illuminate\Support\Facades\File;
 use Statamic\Facades\Form;
@@ -19,7 +19,7 @@ use Tests\TestCase;
  * list, its own sites and its Control Panel middleware. Form files go to a
  * temporary directory, so the host's own forms are never written.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/SitesConfigSectionTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/SitesConfigSectionTest.php
  */
 final class SitesConfigSectionTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Http;
+namespace UAMSWeb\Aether\Forms\Multisite\Http;
 
 use Illuminate\Contracts\Http\Kernel as KernelContract;
 use Illuminate\Foundation\Http\Kernel;
@@ -10,7 +10,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
-use UAMSWeb\MultisiteForms\Http\Middleware\ResolveSubmittedForm;
+use UAMSWeb\Aether\Forms\Multisite\Http\Middleware\ResolveSubmittedForm;
 
 /**
  * Attaches the submit gate to core's front-end routes.
