@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Sites;
+namespace UAMSWeb\Aether\Forms\Multisite\Sites;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;

@@ -1,5 +1,5 @@
 {
-    "name": "uams-web/statamic-multisite-forms",
+    "name": "uams-web/aether-multisite-forms",
     "description": "Per-site forms for multisite Statamic: site assignment, per-site overrides, and site-separated submissions in flat files.",
     "keywords": [
         "statamic",
@@ -9,7 +9,7 @@
     ],
     "type": "statamic-addon",
     "license": "MIT",
-    "homepage": "https://github.com/UAMS-Web/statamic-multisite-forms",
+    "homepage": "https://github.com/UAMS-Web/aether-multisite-forms",
     "authors": [
         {
             "name": "UAMS Web Services"
@@ -20,17 +20,17 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/UAMS-Web/statamic-multisite-forms/issues",
-        "source": "https://github.com/UAMS-Web/statamic-multisite-forms"
+        "issues": "https://github.com/UAMS-Web/aether-multisite-forms/issues",
+        "source": "https://github.com/UAMS-Web/aether-multisite-forms"
     },
     "autoload": {
         "psr-4": {
-            "UAMSWeb\\MultisiteForms\\": "src/"
+            "UAMSWeb\\Aether\\Forms\\Multisite\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "UAMSWeb\\MultisiteForms\\Tests\\": "tests/"
+            "UAMSWeb\\Aether\\Forms\\Multisite\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -40,7 +40,7 @@
         },
         "laravel": {
             "providers": [
-                "UAMSWeb\\MultisiteForms\\ServiceProvider"
+                "UAMSWeb\\Aether\\Forms\\Multisite\\ServiceProvider"
             ]
         },
         "composer-exit-on-patch-failure": true

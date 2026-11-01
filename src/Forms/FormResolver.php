@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Forms;
+namespace UAMSWeb\Aether\Forms\Multisite\Forms;
 
 use Statamic\Forms\Form;
 use Statamic\Sites\Site;
-use UAMSWeb\MultisiteForms\Sites\RequestSite;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 
 /**
  * Resolves a form for a site.

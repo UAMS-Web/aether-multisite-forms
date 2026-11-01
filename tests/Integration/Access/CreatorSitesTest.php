@@ -8,8 +8,8 @@ use Statamic\Events\FormCreating;
 use Statamic\Facades\Form as FormFacade;
 use Statamic\Facades\YAML;
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Access\CreatorSites;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Access\CreatorSites;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * A form created by a user who cannot access every site is assigned to the

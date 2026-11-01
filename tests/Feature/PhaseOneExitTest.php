@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Routing\RouteCollection;
@@ -23,7 +23,7 @@ use Tests\TestCase;
  * page's view go to a temporary directory, so the host's own content is never
  * written.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/PhaseOneExitTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/PhaseOneExitTest.php
  */
 final class PhaseOneExitTest extends TestCase
 {

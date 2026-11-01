@@ -1,4 +1,4 @@
-# Agent instructions for statamic-multisite-forms
+# Agent instructions for aether-multisite-forms
 
 This file is the single source of agent instructions for this repository. Claude Code, Cursor and Codex all read it directly; there is no `CLAUDE.md`, because Claude Code reads `AGENTS.md` only when `CLAUDE.md` is absent. Put instructions here, never in a `CLAUDE.md`.
 
@@ -6,7 +6,7 @@ Everything above the generated section below belongs to this repository and is e
 
 ## About this repository
 
-A Statamic add-on (`uams-web/statamic-multisite-forms`, namespace `UAMSWeb\MultisiteForms`) that makes forms per-site in a multisite install: site assignment, per-site overrides, and site-separated submissions in flat files. It is a Composer library with no `artisan`, `.env`, database or front end; a host application boots it through `extra.laravel.providers`. The `statamic-package-conventions` skill covers what that changes.
+A Statamic add-on (`uams-web/aether-multisite-forms`, namespace `UAMSWeb\Aether\Forms\Multisite`) that makes forms per-site in a multisite install: site assignment, per-site overrides, and site-separated submissions in flat files. It is a Composer library with no `artisan`, `.env`, database or front end; a host application boots it through `extra.laravel.providers`. The `statamic-package-conventions` skill covers what that changes.
 
 ### Commands
 

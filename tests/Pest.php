@@ -18,7 +18,7 @@ use Statamic\Facades\Role;
 use Statamic\Facades\Site;
 use Statamic\Facades\User;
 use Statamic\Sites\Site as SiteObject;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 pest()->extend(TestCase::class)->in('Integration');
 

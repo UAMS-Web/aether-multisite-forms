@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Illuminate\Support\Facades\File;
 use Statamic\Contracts\Auth\User as UserContract;
@@ -24,7 +24,7 @@ use Tests\TestCase;
  * submissions and roles go to temporary paths, so the host's own are never
  * written.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/SubmissionSiteScopeTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/SubmissionSiteScopeTest.php
  */
 final class SubmissionSiteScopeTest extends TestCase
 {

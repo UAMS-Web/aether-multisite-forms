@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Forms;
+namespace UAMSWeb\Aether\Forms\Multisite\Forms;
 
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
 use ReflectionClass;
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Exceptions\ReadOnlyFormException;
+use UAMSWeb\Aether\Forms\Multisite\Exceptions\ReadOnlyFormException;
 
 /**
  * A read-only view of a form as one site sees it.

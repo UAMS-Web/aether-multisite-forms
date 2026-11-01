@@ -31,10 +31,10 @@
 - [API site filter](API-site-filter.md)
 - [Form assigned tag](Form-assigned-tag.md)
 - [Site form view](Site-form-view.md)
-- [README](https://github.com/UAMS-Web/statamic-multisite-forms#readme)
+- [README](https://github.com/UAMS-Web/aether-multisite-forms#readme)
 
 **Project**
 
 - [Project](Project.md)
-- [Report a problem](https://github.com/UAMS-Web/statamic-multisite-forms/issues)
-- [Releases](https://github.com/UAMS-Web/statamic-multisite-forms/releases)
+- [Report a problem](https://github.com/UAMS-Web/aether-multisite-forms/issues)
+- [Releases](https://github.com/UAMS-Web/aether-multisite-forms/releases)

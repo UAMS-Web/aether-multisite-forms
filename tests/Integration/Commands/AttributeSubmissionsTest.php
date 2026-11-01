@@ -18,8 +18,8 @@ use Statamic\Facades\YAML;
 use Statamic\Forms\Form;
 use Statamic\Forms\Submission;
 use Statamic\Stache\Stores\Store;
-use UAMSWeb\MultisiteForms\Commands\AttributeSubmissions;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Commands\AttributeSubmissions;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * `multisite-forms:attribute {form} {site}` records a site on a form's

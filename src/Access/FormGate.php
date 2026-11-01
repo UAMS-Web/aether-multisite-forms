@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Access;
+namespace UAMSWeb\Aether\Forms\Multisite\Access;
 
 use Illuminate\Support\Facades\Gate;
 use Statamic\Contracts\Forms\Submission;
 use Statamic\Facades\User;
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
 
 /**
  * Denies Control Panel users the forms of sites they cannot access (#77).

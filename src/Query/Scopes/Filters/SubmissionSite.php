@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Query\Scopes\Filters;
+namespace UAMSWeb\Aether\Forms\Multisite\Query\Scopes\Filters;
 
 use Statamic\Facades\Form as FormFacade;
 use Statamic\Facades\Site;
@@ -12,9 +12,9 @@ use Statamic\Query\Builder;
 use Statamic\Query\EloquentQueryBuilder;
 use Statamic\Query\Scopes\Filter;
 use Statamic\Sites\Site as SiteObject;
-use UAMSWeb\MultisiteForms\Access\SiteAccess;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
-use UAMSWeb\MultisiteForms\Forms\RecordSubmitSite;
+use UAMSWeb\Aether\Forms\Multisite\Access\SiteAccess;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\RecordSubmitSite;
 
 use function Statamic\trans as __;
 

@@ -13,7 +13,7 @@ Each step is marked **Person** when it needs someone with an account, or **Repo*
 
 ## Packagist (done)
 
-5. **Person.** Done 2026-10-14: the package is [`uams-web/statamic-multisite-forms`](https://packagist.org/packages/uams-web/statamic-multisite-forms).
+5. **Person.** Done 2026-10-14: the package is [`uams-web/aether-multisite-forms`](https://packagist.org/packages/uams-web/aether-multisite-forms).
 6. **Person.** Done: the repository's Packagist webhook sends push events, so a pushed tag appears on Packagist without a manual update.
 
 ## First release (done)

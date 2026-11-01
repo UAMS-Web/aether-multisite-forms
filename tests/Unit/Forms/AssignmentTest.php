@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
 
 /**
  * A form's `sites` key decides which sites it belongs to, and no key, or an

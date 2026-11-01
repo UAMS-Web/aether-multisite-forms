@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Access;
+namespace UAMSWeb\Aether\Forms\Multisite\Access;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;

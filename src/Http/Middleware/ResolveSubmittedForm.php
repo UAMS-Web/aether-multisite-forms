@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Http\Middleware;
+namespace UAMSWeb\Aether\Forms\Multisite\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Log;
 use Statamic\Forms\Form;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use UAMSWeb\MultisiteForms\Forms\FormResolver;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
-use UAMSWeb\MultisiteForms\Sites\RequestSite;
+use UAMSWeb\Aether\Forms\Multisite\Forms\FormResolver;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 
 /**
  * Gates core's form submit route by site assignment.

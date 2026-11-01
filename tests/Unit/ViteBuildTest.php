@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Application;
-use UAMSWeb\MultisiteForms\ServiceProvider;
+use UAMSWeb\Aether\Forms\Multisite\ServiceProvider;
 
 /**
  * The Control Panel build: the provider's `$vite` property, `vite.config.js`,

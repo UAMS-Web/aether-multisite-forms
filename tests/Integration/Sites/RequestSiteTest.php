@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Statamic\Facades\Site;
 use Statamic\Sites\Site as SiteObject;
-use UAMSWeb\MultisiteForms\Sites\RequestSite;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 
 /**
  * The submit site is core's own rule: the site the referrer falls under, else

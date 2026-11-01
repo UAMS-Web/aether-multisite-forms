@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Forms;
+namespace UAMSWeb\Aether\Forms\Multisite\Forms;
 
 use InvalidArgumentException;
 
 /**
  * What the form tags do with a form not assigned to the page's site, read from
- * `statamic-multisite-forms.not_assigned`.
+ * `aether-multisite-forms.not_assigned`.
  */
 enum NotAssigned: string
 {
@@ -19,7 +19,7 @@ enum NotAssigned: string
     case NotFound = '404';
 
     /** The config key the setting is read from. */
-    public const string CONFIG_KEY = 'statamic-multisite-forms.not_assigned';
+    public const string CONFIG_KEY = 'aether-multisite-forms.not_assigned';
 
     /**
      * The configured setting. An integer 404 is accepted, since a config file

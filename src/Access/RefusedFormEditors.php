@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Access;
+namespace UAMSWeb\Aether\Forms\Multisite\Access;
 
 use Illuminate\Support\Facades\Gate;
 use Statamic\Facades\Form as FormFacade;

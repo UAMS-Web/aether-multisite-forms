@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Testing\TestResponse;
@@ -26,7 +26,7 @@ use Tests\TestCase;
  * temporary paths, so the host's own forms, blueprints and roles are never
  * written.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/FormSiteAccessTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/FormSiteAccessTest.php
  */
 final class FormSiteAccessTest extends TestCase
 {

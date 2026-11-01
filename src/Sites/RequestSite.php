@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Sites;
+namespace UAMSWeb\Aether\Forms\Multisite\Sites;
 
 use Illuminate\Support\Facades\URL;
 use LogicException;

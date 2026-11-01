@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tests\Feature;
+namespace UAMSWeb\Aether\Forms\Multisite\Tests\Feature;
 
 use Statamic\Facades\Addon;
 use Statamic\Facades\Site;
 use Tests\TestCase;
-use UAMSWeb\MultisiteForms\ServiceProvider;
+use UAMSWeb\Aether\Forms\Multisite\ServiceProvider;
 
 /**
  * Host-bound smoke test: the add-on is discovered and booted by a real
@@ -19,7 +19,7 @@ use UAMSWeb\MultisiteForms\ServiceProvider;
  * from the root of the host described in `docs/DEVELOPMENT.md`, with the add-on
  * installed through a path repository.
  *
- * @command  php artisan test vendor/uams-web/statamic-multisite-forms/tests/Feature/HostRegistersAddonTest.php
+ * @command  php artisan test vendor/uams-web/aether-multisite-forms/tests/Feature/HostRegistersAddonTest.php
  */
 final class HostRegistersAddonTest extends TestCase
 {
@@ -33,7 +33,7 @@ final class HostRegistersAddonTest extends TestCase
         $packages = Addon::all()->map->package()->all();
 
         // Expect this add-on among them
-        $this->assertContains('uams-web/statamic-multisite-forms', $packages);
+        $this->assertContains('uams-web/aether-multisite-forms', $packages);
     }
 
     /** The add-on's service provider was registered and booted by the host. */

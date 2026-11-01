@@ -12,7 +12,7 @@ use Statamic\Fields\Blueprint;
 use Statamic\Fields\BlueprintRepository;
 use Statamic\Forms\Form;
 use Symfony\Component\HttpFoundation\Response;
-use UAMSWeb\MultisiteForms\Http\Middleware\AuthorizeFormBlueprint;
+use UAMSWeb\Aether\Forms\Multisite\Http\Middleware\AuthorizeFormBlueprint;
 
 /**
  * Core's form blueprint editor, the screen and the save, is refused for a form

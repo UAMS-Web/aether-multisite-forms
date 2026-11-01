@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Access;
+namespace UAMSWeb\Aether\Forms\Multisite\Access;
 
 /**
  * What the submission scope applies for one user in one request (#123).

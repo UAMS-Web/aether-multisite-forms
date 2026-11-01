@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Api;
+namespace UAMSWeb\Aether\Forms\Multisite\Api;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -14,7 +14,7 @@ use Statamic\Forms\Form;
 use Statamic\Http\Controllers\API\FormsController as CoreFormsController;
 use Statamic\Http\Resources\API\FormResource;
 use Statamic\Sites\Site as SiteObject;
-use UAMSWeb\MultisiteForms\Forms\Assignment;
+use UAMSWeb\Aether\Forms\Multisite\Forms\Assignment;
 
 /**
  * The REST `forms` listing, with an optional `site` filter (#80).

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * Each parallel worker gets its own license-check cache, so workers never share

@@ -1,10 +1,10 @@
 The add-on has one setting, `not_assigned`. Publish the config file to change it:
 
 ```sh
-php artisan vendor:publish --tag=statamic-multisite-forms-config
+php artisan vendor:publish --tag=aether-multisite-forms-config
 ```
 
-That writes `config/statamic-multisite-forms.php`.
+That writes `config/aether-multisite-forms.php`.
 
 | Key | Values | Default |
 | --- | --- | --- |

@@ -2,7 +2,7 @@ Written against v0.6.1.
 
 By the end of this page you will have a contact form that shows on one site, then on two, with each site's submissions stored apart and each site's email going to its own recipient.
 
-It assumes the add-on is installed (see [Installation (README)](https://github.com/UAMS-Web/statamic-multisite-forms#installation)) in a multisite install with two sites: English (`en`, at `/`) and Spanish (`es`, at `/es/`). Use your own site handles where these appear.
+It assumes the add-on is installed (see [Installation (README)](https://github.com/UAMS-Web/aether-multisite-forms#installation)) in a multisite install with two sites: English (`en`, at `/`) and Spanish (`es`, at `/es/`). Use your own site handles where these appear.
 
 ## 1. Create a form
 

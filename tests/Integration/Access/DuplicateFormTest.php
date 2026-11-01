@@ -11,8 +11,8 @@ use Statamic\Facades\Form as FormFacade;
 use Statamic\Fields\BlueprintRepository;
 use Statamic\Forms\Form;
 use Symfony\Component\HttpFoundation\Response;
-use UAMSWeb\MultisiteForms\Actions\DuplicateForm;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Actions\DuplicateForm;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * Core's Duplicate action on forms is refused for a form the user may not view

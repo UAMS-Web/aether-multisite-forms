@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Facades\Event;
-use UAMSWeb\MultisiteForms\Forms\NotAssigned;
-use UAMSWeb\MultisiteForms\ServiceProvider;
+use UAMSWeb\Aether\Forms\Multisite\Forms\NotAssigned;
+use UAMSWeb\Aether\Forms\Multisite\ServiceProvider;
 
 /**
  * The add-on's service provider registers, publishes its config, and reports an
@@ -19,11 +19,11 @@ it('registers its service provider with the application', function (): void {
 
 it('publishes its config file under the tag the README names', function (): void {
     // Read the paths published under the config tag
-    $paths = ServiceProvider::pathsToPublish(null, 'statamic-multisite-forms-config');
+    $paths = ServiceProvider::pathsToPublish(null, 'aether-multisite-forms-config');
 
     // Expect the package config to publish to the app's config directory
-    expect(array_map(realpath(...), array_keys($paths)))->toBe([realpath(__DIR__.'/../../config/statamic-multisite-forms.php')])
-        ->and(array_values($paths))->toBe([config_path('statamic-multisite-forms.php')]);
+    expect(array_map(realpath(...), array_keys($paths)))->toBe([realpath(__DIR__.'/../../config/aether-multisite-forms.php')])
+        ->and(array_values($paths))->toBe([config_path('aether-multisite-forms.php')]);
 });
 
 /**

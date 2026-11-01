@@ -8,9 +8,9 @@ use Statamic\Forms\Form;
 use Statamic\GraphQL\Queries\FormsQuery as CoreFormsQuery;
 use Statamic\Http\Controllers\API\FormsController as CoreFormsController;
 use Symfony\Component\HttpFoundation\Response;
-use UAMSWeb\MultisiteForms\Api\FormsController;
-use UAMSWeb\MultisiteForms\GraphQL\FormsQuery;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Api\FormsController;
+use UAMSWeb\Aether\Forms\Multisite\GraphQL\FormsQuery;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * The REST and GraphQL form listings take an optional `site` filter, limiting

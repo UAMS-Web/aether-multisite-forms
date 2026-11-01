@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Http\Middleware;
+namespace UAMSWeb\Aether\Forms\Multisite\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

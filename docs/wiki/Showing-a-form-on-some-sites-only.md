@@ -35,10 +35,10 @@ A submit to the form from such a site answers 404, even from a request made by h
 When a page that renders an unassigned form should not exist on that site at all, publish the config file:
 
 ```sh
-php artisan vendor:publish --tag=statamic-multisite-forms-config
+php artisan vendor:publish --tag=aether-multisite-forms-config
 ```
 
-Then set `not_assigned` to `404` in `config/statamic-multisite-forms.php`:
+Then set `not_assigned` to `404` in `config/aether-multisite-forms.php`:
 
 ```php
 'not_assigned' => '404',

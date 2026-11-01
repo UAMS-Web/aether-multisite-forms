@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Tags;
+namespace UAMSWeb\Aether\Forms\Multisite\Tags;
 
 use Statamic\Exceptions\NotFoundHttpException;
 use Statamic\Facades\Blink;
 use Statamic\Facades\Form as FormFacade;
 use Statamic\Forms\Form;
 use Statamic\Forms\Tags;
-use UAMSWeb\MultisiteForms\Forms\FormResolver;
-use UAMSWeb\MultisiteForms\Forms\NotAssigned;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
-use UAMSWeb\MultisiteForms\Sites\RequestSite;
+use UAMSWeb\Aether\Forms\Multisite\Forms\FormResolver;
+use UAMSWeb\Aether\Forms\Multisite\Forms\NotAssigned;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 
 /**
  * Core's `{{ form }}` tags, gated by site assignment.

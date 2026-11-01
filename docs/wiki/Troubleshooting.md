@@ -48,12 +48,12 @@ A submit from one site answers 404 while the same form submits from another. The
 The log holds, on every request and `artisan` command:
 
 ```text
-local.ERROR: The statamic-multisite-forms.not_assigned setting must be "empty" or "404"; got NULL.
+local.ERROR: The aether-multisite-forms.not_assigned setting must be "empty" or "404"; got NULL.
 ```
 
 A page with a form not assigned to its site then fails with the same message.
 
-**Cause:** `not_assigned` in `config/statamic-multisite-forms.php` holds another value. `got NULL` is most often an `env()` call whose variable is not set, such as `env('MSF_NOT_ASSIGNED')`.
+**Cause:** `not_assigned` in `config/aether-multisite-forms.php` holds another value. `got NULL` is most often an `env()` call whose variable is not set, such as `env('MSF_NOT_ASSIGNED')`.
 
 **Fix:** set it to `'empty'` or `'404'`, or give the `env()` call a default: `env('MSF_NOT_ASSIGNED', 'empty')`.
 

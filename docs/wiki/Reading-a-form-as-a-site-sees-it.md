@@ -6,7 +6,7 @@ Written against v0.6.1.
 
 ```php
 use Statamic\Facades\Form;
-use UAMSWeb\MultisiteForms\Forms\FormResolver;
+use UAMSWeb\Aether\Forms\Multisite\Forms\FormResolver;
 
 $form = app(FormResolver::class)->resolve(Form::find('contact'), 'es');
 
@@ -31,7 +31,7 @@ With `contact` assigned to English and Spanish, and a Spanish row setting the ti
 
 ## Changing the form itself
 
-The resolved form is read-only. Saving it throws `UAMSWeb\MultisiteForms\Exceptions\ReadOnlyFormException`, so one site's values never reach the form file:
+The resolved form is read-only. Saving it throws `UAMSWeb\Aether\Forms\Multisite\Exceptions\ReadOnlyFormException`, so one site's values never reach the form file:
 
 ```text
 The [contact] form resolved for the [es] site is read-only and cannot be saved. Resolve nothing and use Form::find('contact') to change the form itself.

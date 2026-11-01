@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Exceptions\ReadOnlyFormException;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Exceptions\ReadOnlyFormException;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
 
 /**
  * A site-resolved form is a read-only copy of the base form: it carries the

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace UAMSWeb\MultisiteForms\Forms;
+namespace UAMSWeb\Aether\Forms\Multisite\Forms;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Statamic\Contracts\Forms\Submission;
 use Statamic\Events\FormSubmitted;
 use Statamic\Events\SubmissionCreating;
-use UAMSWeb\MultisiteForms\Http\Middleware\ResolveSubmittedForm;
-use UAMSWeb\MultisiteForms\Sites\RequestSite;
+use UAMSWeb\Aether\Forms\Multisite\Http\Middleware\ResolveSubmittedForm;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 
 /**
  * Records the site a submission was made from, under the reserved `_site` key.

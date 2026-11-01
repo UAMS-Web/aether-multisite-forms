@@ -5,8 +5,8 @@ declare(strict_types=1);
 use Statamic\Contracts\Forms\Form as FormContract;
 use Statamic\Facades\Form as FormFacade;
 use Statamic\Forms\Form;
-use UAMSWeb\MultisiteForms\Forms\FormResolver;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Forms\FormResolver;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
 
 /**
  * The resolver answers whether a form is assigned to a site, and returns a

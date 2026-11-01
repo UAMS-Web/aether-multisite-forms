@@ -20,12 +20,12 @@ use Statamic\Facades\Form as FormFacade;
 use Statamic\Facades\Stache;
 use Statamic\Forms\Form;
 use Statamic\Stache\Stores\Store;
-use UAMSWeb\MultisiteForms\Forms\FormResolver;
-use UAMSWeb\MultisiteForms\Forms\SiteForm;
-use UAMSWeb\MultisiteForms\Http\Middleware\ResolveSubmittedForm;
-use UAMSWeb\MultisiteForms\Http\SubmitGate;
-use UAMSWeb\MultisiteForms\Sites\RequestSite;
-use UAMSWeb\MultisiteForms\Tests\TestCase;
+use UAMSWeb\Aether\Forms\Multisite\Forms\FormResolver;
+use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Http\Middleware\ResolveSubmittedForm;
+use UAMSWeb\Aether\Forms\Multisite\Http\SubmitGate;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
+use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
  * Core's form submit route answers 404 for a form not assigned to the submit
