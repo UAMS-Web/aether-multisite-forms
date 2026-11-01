@@ -175,7 +175,7 @@ Where a repository already has either key, add the one line to the end of its ar
 
 ### Local CI jobs
 
-Three jobs, one per tool, run before a pull request:
+Three jobs, one per tool, run before a pull request where remote CI does not run them (see *Before a pull request*):
 
 | Job | Command | Gated by |
 |---|---|---|
@@ -242,7 +242,7 @@ Each repository adopts Larastan or PHPStan at the highest level its code passes 
 
 When finding that starting level, do not count on `ignoreErrors` entries that paper over existing debt (identifier/path pins added so a higher level looks green). The starting level is the highest level the code passes with only the ignores the template already documents for harness noise. The WordPress template's Pest entries (`reportUnmatched: false`, scoped to `tests/`) are that kind of harness noise and may stay uncommented when the suite needs them; they do not invent a higher starting level. New pins for real code debt land only after the starting level is set, each with a comment naming the cause.
 
-Where the three configured repositories stand (from their `phpstan.neon.dist`, 2026-10-02): `uams-statamic` is at `level: 10`, climbing one level per commit toward `max` (its #914); `wordpress-importer` is at `max`; `uamswp-migration-api` opened at `max` with `phpVersion` 8.2 to 8.4, because it was a thousand lines old when the analyzer arrived and had no debt to pay down. PHPStan's levels run 0 to 10, and `max` is an alias for the highest, so a repository at `max` picks up the next level automatically when PHPStan adds one (phpstan.org/user-guide/rule-levels, 2026-10-02).
+Where the three configured repositories stand (from their `phpstan.neon.dist`, 2026-10-02): `uams-statamic` is at `level: 10`, climbing one level per commit toward `max` (UAMS-Web/uams-statamic-archive#914); `wordpress-importer` is at `max`; `uamswp-migration-api` opened at `max` with `phpVersion` 8.2 to 8.4, because it was a thousand lines old when the analyzer arrived and had no debt to pay down. PHPStan's levels run 0 to 10, and `max` is an alias for the highest, so a repository at `max` picks up the next level automatically when PHPStan adds one (phpstan.org/user-guide/rule-levels, 2026-10-02).
 
 A baseline file, which PHPStan offers as the other way to adopt a high level by recording every existing error and suppressing it, is not used. Issue #10 weighed it against starting low and rising and chose the latter: with a baseline the level in the configuration says nothing about the code, since the suppressed list can hold any number of errors at that level, and that list is a second backlog to drain with no step at which the whole codebase is known to pass. Starting at the level the code passes means every level the configuration has ever named is one the entire codebase passed. The other alternative, fixing every finding before adopting, delays adoption until the whole codebase is clean.
 
@@ -286,7 +286,9 @@ Never reformat vendor code, and never let the reformat commit include it: if Pin
 
 ## Before a pull request
 
-Run the three commands on the branch, and fix what they report before asking for review. The CI workflow runs them again on the pull request, and a reviewer should see that run's result for the commit under review.
+In a public repository whose CI workflow runs the three tools, that run on a draft pull request is the pre-PR check: run nothing locally first, open the pull request as a draft, fix what the workflow reports by pushing to the same branch, and flip it to ready once every remote check is green. The [`writing-pull-requests`](../writing-pull-requests/SKILL.md) skill's *Draft state and merge order* owns this and names the cases that still run locally. Where the tools have no remote run:
+
+Run the three commands on the branch, and fix what they report before asking for review.
 
 A finding you disagree with is argued in the configuration, with a reason, scoped as narrowly as the tool allows. Never a blanket suppression.
 

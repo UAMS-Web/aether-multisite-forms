@@ -121,7 +121,7 @@ generator below), and the generator emits each only when its option is passed.
 and a squash-merging repository's commit subject *is* the pull-request title. Measured in
 `wordpress-importer` over `v0.17.0..v0.18.0` (`wordpress-importer-archive#1093`), **0 of 20** subjects
 carried one, so the branches that used to route on them never fired, and every tooling change fell
-through to *What's new*. The same was found in `uams-statamic` (`uams-statamic#2465`). Routing
+through to *What's new*. The same was found in `uams-statamic` (`uams-statamic-archive#2465`). Routing
 keys on signals the conventions actually produce.
 
 Precedence, first match wins:
@@ -285,7 +285,7 @@ exact moment a release is due while 4,900+ REST calls sit idle. Observed cutting
 remaining) while `core` still had 4,967:
 
 ```
-GraphQL: API rate limit already exceeded for user ID 15675878.
+GraphQL: API rate limit already exceeded for user ID <id>.
 ```
 
 Exit `1`, no release created. The REST equivalent published immediately, same credential, same

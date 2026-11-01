@@ -116,7 +116,7 @@ _ACRO = {"wordpress": "WordPress", "composer": "Composer", "json-ld": "JSON-LD",
 # word character, `-` or `/`, or by `:` or `.` with a word character straight after. A
 # trailing `:` or `.` before a space is punctuation, so "the api." and "php: all" are
 # still cased. `\b` alone treated those joins as word boundaries
-# (UAMS-Web/uams-statamic#2589, UAMS-Web/uamswp-migration-api-archive#318).
+# (UAMS-Web/uams-statamic-archive#2589, UAMS-Web/uamswp-migration-api-archive#318).
 _ACRO_RE = re.compile(
     r"(?<![\w@:/.-])(" + "|".join(re.escape(k) for k in _ACRO) + r")(?![\w/-]|[:.]\w)", re.I
 )
@@ -136,7 +136,7 @@ def fix_acro(s):
       became `uams-web/WordPress-importer` and `statamic/cms` became `Statamic/cms`, both real
       Composer package names, neither of which resolves.
     - A word joined to a larger token keeps its case even outside a span
-      (UAMS-Web/uams-statamic#2589, UAMS-Web/uamswp-migration-api-archive#318). Without it, the
+      (UAMS-Web/uams-statamic-archive#2589, UAMS-Web/uamswp-migration-api-archive#318). Without it, the
       unquoted `wordpress-importer` in a title became `WordPress-importer`.
 
     This is a NARROWING, not a removal: the same substitution still applies to every
@@ -184,7 +184,7 @@ SEC_PHRASES = ("ssl verif", "security header", "x-powered-by", "password protect
 # A Conventional-Commit prefix is STRIPPED, never routed on. The title conventions in
 # `writing-pull-requests` forbid these outright, so a prefix here is legacy litter -- and
 # routing on it meant no title the conventions produce could ever match
-# (UAMS-Web/uams-statamic#2465, UAMS-Web/wordpress-importer-archive#1093).
+# (UAMS-Web/uams-statamic-archive#2465, UAMS-Web/wordpress-importer-archive#1093).
 CC_PREFIX = re.compile(
     r"^(?:feat|fix|docs|build|ci|test|chore|style|refactor|perf|revert)(?:\([^)]*\))?!?:\s*", re.I)
 

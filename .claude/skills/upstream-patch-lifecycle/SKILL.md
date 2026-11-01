@@ -31,8 +31,8 @@ description: >-
 
 A local Composer patch is a debt with a defined payoff schedule. This skill is that schedule: the
 four tickets that track it, and the repo-side mechanics of each installment. Every step below has
-been paid for once, in `uams-statamic`'s `pest-plugin-mutate` run (its #1728 → #1729 →
-[`pestphp/pest-plugin-mutate#38`](https://github.com/pestphp/pest-plugin-mutate/pull/38) → #1898),
+been paid for once, in `uams-statamic`'s `pest-plugin-mutate` run (UAMS-Web/uams-statamic-archive#1728 → UAMS-Web/uams-statamic-archive#1729 →
+[`pestphp/pest-plugin-mutate#38`](https://github.com/pestphp/pest-plugin-mutate/pull/38) → UAMS-Web/uams-statamic-archive#1898),
 and each was re-derived from scratch along the way. Follow the checklist instead of re-deriving
 it.
 
@@ -86,7 +86,7 @@ and testing the branch. The one step it does not take alone is the post itself, 
 appears on a third-party public tracker under a maintainer's own identity: the agent asks a human
 to approve it, and posts only after that approval. That approval is a step inside the ticket, not a
 reason to label the whole ticket `hitl`, which would leave the preparation waiting for a person
-too (`UAMS-Web/uams-statamic#2772`). There is no decision to make either, so the
+too (`UAMS-Web/uams-statamic-archive#2772`). There is no decision to make either, so the
 [`design-decision-forks`](../../rules/design-decision-forks.md) rule does not apply to them.
 Tickets 1 and 4 are ordinary in-repo builds. Ticket 4's package update often arrives as a
 Dependabot pull request: then the patch retires on that pull request's branch, per the
@@ -148,7 +148,7 @@ budget it protects are the [`github-api-budget`](../../rules/github-api-budget.m
 ### Where to file when the upstream tracker is not where you think
 
 Check `has_issues` before drafting anything, and check **only** that field.
-`pestphp/pest-plugin-mutate` has issues **disabled**, so `uams-statamic`'s #1729 had to be
+`pestphp/pest-plugin-mutate` has issues **disabled**, so UAMS-Web/uams-statamic-archive#1729 had to be
 retargeted to Pest core mid-flight. Its `open_issues_count` is actively misleading, with issues
 off, GitHub still counts pull requests there, so the repo reads as a live tracker with a handful
 of open reports (7 when #1729 checked it, 4 on a later check, never once an issue):
@@ -275,7 +275,7 @@ A merge is not a release, and a release on the wrong major line is not a release
 Upstream PRs `pestphp/pest#1742` and `#1757` implemented a parallel-merge fix `uams-statamic`
 once carried as a patch, but both were based on `4.x`, so neither could reach the 5.x line that
 repository runs even if merged. The patch stayed until `pestphp/pest` `v5.2.0` shipped an
-equivalent fix on 5.x (`UAMS-Web/uams-statamic#2414`).
+equivalent fix on 5.x (`UAMS-Web/uams-statamic-archive#2414`).
 
 **No upstream watcher runs here until the repository adopts one.** The skill ships one in
 [`templates/`](templates/), and the sync never writes a target's `.github/`, so adoption is a
@@ -479,7 +479,7 @@ the approval is requested, against the current upstream release named in the dra
 written earlier is re-verified at that point, and the claims and checks are recorded on the
 filing ticket first.
 
-**The rule (decided 2026-09-30, `UAMS-Web/uams-statamic#2723`):**
+**The rule (decided 2026-09-30, `UAMS-Web/uams-statamic-archive#2723`):**
 
 1. **The filing ticket closes once the item is posted.** Its own work, drafting and filing
    the upstream item and recording the link, is done at that point.

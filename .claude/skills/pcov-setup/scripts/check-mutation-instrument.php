@@ -17,7 +17,7 @@ use Symfony\Component\Process\Process;
  * PHP sets argv[0] to the script path AS TYPED, so on Windows both `vendor/bin/pest` and
  * `php vendor/bin/pest` hand the child a forward-slashed relative path that cmd.exe cannot
  * launch. Measured on Windows 11 Pro 10.0.26200 / PHP 8.4.20 / pest-plugin-mutate v5.0.2,
- * one class, one tree, cache cleared between arms (uams-statamic#2322):
+ * one class, one tree, cache cleared between arms (uams-statamic-archive#2322):
  *
  *   vendor/bin/pest        (forward)   20 tested,  0 untested   100.00%   fabricated
  *   php vendor/bin/pest    (forward)   20 tested,  0 untested   100.00%   fabricated
@@ -39,7 +39,7 @@ use Symfony\Component\Process\Process;
  *      MEASURES whether a child starts rather than branching on the operating system, so
  *      correct on a platform where forward slashes are fine.
  *   2. Whether the installed plugin carries a launch patch that normalizes argv[0] and
- *      aborts when the child still cannot start (uams-statamic#2322's `canLaunchMutantProcess`).
+ *      aborts when the child still cannot start (uams-statamic-archive#2322's `canLaunchMutantProcess`).
  *      `composer install` does not re-patch an already-installed package, so a `vendor/`
  *      predating the patch is unguarded while reporting the same version.
  *

@@ -61,7 +61,7 @@ And when several sessions could plausibly find the same thing at the same time, 
 
    No check enforces the second. It needs writing down precisely because nothing can verify it.
 
-   Where a finding belongs in someone else's ticket, **say so and let them add it** rather than editing their body. Cross-repo, this is `UAMS-Web/uams-statamic#2193`'s subject as well; read it rather than restating it.
+   Where a finding belongs in someone else's ticket, **say so and let them add it** rather than editing their body. Cross-repo, this is `UAMS-Web/uams-statamic-archive#2193`'s subject as well; read it rather than restating it.
 
 8. **Record what was measured and under what conditions, and for a dependency, the REVISION, because a version string does not identify code.** Name the version, the platform, and the surface the observation came from, and state the bounds you did not test. A finding whose conditions are not written down is generalized past its evidence by the next person to act on it, including by whoever writes the fix: a `claude-skills` line measured on one command surface was withdrawn as simply wrong, and the correction had to be amended a second time to say it had been *scoped*, not wrong.
 

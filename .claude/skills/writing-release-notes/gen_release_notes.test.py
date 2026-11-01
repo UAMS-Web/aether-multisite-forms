@@ -435,7 +435,7 @@ class AcronymCasingTest(unittest.TestCase):
 
     Backticked text is something a reader copies: a package name, a path, a handle: so
     rewriting its case corrupts it (UAMS-Web/wordpress-importer-archive#1110). So is a word joined to
-    a larger token (UAMS-Web/uams-statamic#2589, UAMS-Web/uamswp-migration-api-archive#318). Both
+    a larger token (UAMS-Web/uams-statamic-archive#2589, UAMS-Web/uamswp-migration-api-archive#318). Both
     halves are asserted deliberately: a test that only checked identifiers survive would pass
     against a `fix_acro()` that had been deleted outright.
     """
