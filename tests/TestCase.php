@@ -7,6 +7,7 @@ namespace UAMSWeb\Aether\Forms\Multisite\Tests;
 use Illuminate\Foundation\Application;
 use Statamic\Testing\AddonTestCase;
 use UAMSWeb\Aether\Forms\Multisite\ServiceProvider;
+use function Orchestra\Testbench\default_skeleton_path;
 
 /**
  * Base class for the Integration suite: boots a minimal Statamic through
@@ -43,6 +44,12 @@ abstract class TestCase extends AddonTestCase
             $_SERVER['APP_SERVICES_CACHE'] = $_ENV['APP_SERVICES_CACHE'] = "bootstrap/cache/test_{$token}_services.php";
         }
 
+        // Name a compiled-view directory for this worker when there is a token (#216)
+        $views = self::compiledViewPath($token);
+        if ($views !== null) {
+            $_SERVER['VIEW_COMPILED_PATH'] = $_ENV['VIEW_COMPILED_PATH'] = $views;
+        }
+
         // Boot the application
         parent::setUp();
     }
@@ -75,6 +82,29 @@ abstract class TestCase extends AddonTestCase
         if ($path !== null) {
             $app['config']->set('cache.stores.outpost.path', $path);
         }
+    }
+
+    /**
+     * The compiled-view directory for a parallel worker token, or null outside a
+     * parallel run.
+     *
+     * Every worker boots the same Testbench skeleton, so all of them compile Blade
+     * views into one `storage/framework/views`. Compiling writes a temporary file
+     * and renames it over the compiled view; on Windows that rename fails with
+     * "Access is denied" while another worker has the target open, failing whichever
+     * test was rendering the view (#216).
+     *
+     * This is an absolute path built from the skeleton rather than `storage_path()`,
+     * because `setUp()` needs it as `VIEW_COMPILED_PATH` before any application
+     * exists: the Blade compiler is built before `getEnvironmentSetUp()` runs, so a
+     * config override there is too late.
+     *
+     * @param  mixed  $token  The parallel worker token, or null outside a parallel run.
+     * @return ?string The worker's compiled-view directory, or null without a usable token.
+     */
+    public static function compiledViewPath(mixed $token): ?string
+    {
+        return is_string($token) || is_int($token) ? default_skeleton_path('storage/framework')."/views-{$token}" : null;
     }
 
     /**
