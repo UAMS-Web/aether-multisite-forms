@@ -7,6 +7,7 @@ namespace UAMSWeb\Aether\Forms\Multisite\Tests;
 use Illuminate\Foundation\Application;
 use Statamic\Testing\AddonTestCase;
 use UAMSWeb\Aether\Forms\Multisite\ServiceProvider;
+
 use function Orchestra\Testbench\default_skeleton_path;
 
 /**

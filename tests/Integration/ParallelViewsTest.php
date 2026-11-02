@@ -26,7 +26,9 @@ test('the application in this run compiles views into the directory for its own 
     $expected = TestCase::compiledViewPath($_SERVER['TEST_TOKEN'] ?? null) ?? storage_path('framework/views');
 
     // Expect the Blade compiler to write there, whichever separator each path uses
-    $normalize = static fn (string $path): string => str_replace('\\', '/', $path);
-    expect($normalize((string) config('view.compiled')))->toBe($normalize($expected))
-        ->and($normalize(app('blade.compiler')->getCompiledPath('x')))->toStartWith($normalize($expected));
+    $normalize = static fn (mixed $path): string => str_replace('\\', '/', is_string($path) ? $path : '');
+    $compiled = $normalize(app('blade.compiler')->getCompiledPath('x'));
+
+    expect($normalize(config('view.compiled')))->toBe($normalize($expected))
+        ->and(str_starts_with($compiled, $normalize($expected)))->toBeTrue();
 });
