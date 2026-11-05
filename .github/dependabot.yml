@@ -7,6 +7,12 @@
 # One entry per package ecosystem. Minor and patch updates are grouped per entry, so a week
 # produces a few pull requests rather than one per package; a major update stays in a pull
 # request of its own. The npm entry covers the dev-only tooling behind the guard-script tests.
+#
+# The npm entry ignores `@statamic/cms`. In `package.json` it is a `file:` link into
+# `vendor/statamic/cms`, which Composer installs and the repository does not track, so Dependabot
+# cannot retrieve it and the whole npm job failed on 2026-10-14, -20, -27 and 2026-11-03 with "The
+# following path based dependencies could not be retrieved: @statamic/cms". Composer moves it
+# with `statamic/cms`, so npm has nothing to update there.
 version: 2
 updates:
   - package-ecosystem: npm
@@ -14,6 +20,8 @@ updates:
     target-branch: main
     schedule:
       interval: weekly
+    ignore:
+      - dependency-name: '@statamic/cms'
     groups:
       npm-minor-and-patch:
         update-types:
