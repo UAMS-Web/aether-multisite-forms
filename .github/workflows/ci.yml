@@ -13,6 +13,12 @@ name: CI
 #   call. Dropping it adds Windows and macOS legs to the jobs the chain classifies for all three
 #   platforms (`mutate-ignore`, `mutate`, `pest`); that is a separate decision from this file.
 #   `mutate-paths` is the path the `mutate` job selects changed PHP files from.
+# - What the `mutate` job mutates depends on the event. A pull request and a push to `main` mutate only
+#   the PHP files under `mutate-paths` that the commit adds, changes or renames; a commit that changes
+#   none passes with nothing mutated. The full pass over everything `composer mutate` covers runs on the
+#   `schedule` trigger below (Mondays at 07:17 UTC) and on `workflow_dispatch`, under the called
+#   workflow's `mutate-full-timeout-minutes` (180 by default, against about 28 minutes measured for the
+#   full pass on `628e09b`). The full pass is what catches drift from a dependency or tooling change.
 # - The chain's checks report as `checks / <job name> (<operating system>)`.
 #
 # REQUIRED CHECKS. The organization ruleset for this repository requires three contexts: `CI`,
@@ -29,7 +35,10 @@ on:
   pull_request:
   push:
     branches: [main]
-  # Lets the workflow be run on demand against a branch.
+  # The full mutation pass, weekly. A push mutates only the files it changed.
+  schedule:
+    - cron: '17 7 * * 1'
+  # Lets the workflow be run on demand against a branch; on `main` it runs the full mutation pass.
   workflow_dispatch:
 
 # A new push to a pull request cancels that pull request's stale run. Every other run (a push to
@@ -46,7 +55,7 @@ permissions:
 jobs:
   # The shared chain.
   checks:
-    uses: UAMS-Web/uams-ci-workflows/.github/workflows/ci.yml@v0.1.0
+    uses: UAMS-Web/uams-ci-workflows/.github/workflows/ci.yml@v0.5.0
     with:
       linux-only: true
       mutate-paths: src
