@@ -17,8 +17,10 @@ use Statamic\Facades\Stache;
 use Statamic\Facades\YAML;
 use Statamic\Forms\Form;
 use Statamic\Forms\Submission;
+use Statamic\Query\Builder;
 use Statamic\Stache\Stores\Store;
 use UAMSWeb\Aether\Forms\Multisite\Commands\AttributeSubmissions;
+use UAMSWeb\Aether\Forms\Multisite\Forms\RecordSubmitSite;
 use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
@@ -284,6 +286,29 @@ it('attributes a submission whose file holds an empty site, and leaves no empty 
     // Expect the file and every unattributed submission to record es
     expect(YAML::parse(File::get($path)))->toHaveKey('_site', 'es')
         ->and(recordedSites('shared'))->toBe(['blank' => 'es', 'en0' => 'en', 'es1' => 'es', 'none2' => 'es', 'none3' => 'es']);
+});
+
+it('asks the query for a missing site as well as an empty one', function (): void {
+    // Core's flat-file builder compares a missing value as empty, so only a
+    // builder that treats NULL apart from '' (the Eloquent driver's) tells the
+    // two conditions apart; record what the command asks of the builder instead
+    $group = Mockery::mock(Builder::class);
+    $group->shouldReceive('whereNull')->once()->with(RecordSubmitSite::KEY);
+    $group->shouldReceive('orWhere')->once()->with(RecordSubmitSite::KEY, '');
+
+    // Hand the command a builder that runs the nested group against the recorder
+    $query = Mockery::mock(Builder::class);
+    $query->shouldReceive('where')->once()->with('form', 'shared')->andReturnSelf();
+    $query->shouldReceive('where')->once()->with(Mockery::on(function (Closure $condition) use ($group): bool {
+        $condition($group);
+
+        return true;
+    }))->andReturnSelf();
+    $query->shouldReceive('get')->once()->andReturn(collect());
+    FormSubmission::shouldReceive('query')->once()->andReturn($query);
+
+    // Expect the command to find nothing to attribute through that builder
+    attribute($this, ['form' => 'shared', 'site' => 'es'])->assertSuccessful();
 });
 
 it('counts a submission with an empty site in a dry run, and leaves its file alone', function (): void {
