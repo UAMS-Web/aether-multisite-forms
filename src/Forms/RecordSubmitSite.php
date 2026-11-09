@@ -20,8 +20,9 @@ use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
  * emails. The site is the one core passes to the email job, from the shared
  * submit-site helper. A visitor cannot put a value of their own in the request
  * body: core treats request values starting with `_` as parameters, and only
- * blueprint fields become data. The site itself comes from the referrer, as
- * core's email site does, and the submit gate admits only the form's sites.
+ * blueprint fields become data. The site itself is the one the form tag's
+ * signed field names, else the referrer's as core's email site is, and the
+ * submit gate admits only the form's sites.
  *
  * Core dispatches `FormSubmitted` halting on the first listener that returns
  * anything other than null, so a listener registered before this one can stop

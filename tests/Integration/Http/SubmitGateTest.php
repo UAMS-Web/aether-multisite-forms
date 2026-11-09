@@ -227,6 +227,21 @@ it('answers 404 to a submit from a site the form is not assigned to, and stores 
     expect(storedSubmissions())->toBe(0);
 });
 
+it('gates by the signed site the form carried rather than by the referrer', function (string $assigned, string $site, bool $accepted): void {
+    // Save a form assigned to one site
+    submittableForm([$assigned]);
+
+    // Submit from an English page, carrying the given site signed
+    $response = $this->post('/!/forms/contact', ['message' => 'hello', RequestSite::FIELD => RequestSite::sign($site)], ['referer' => 'http://localhost/contact']);
+
+    // Expect the signed site to decide, and a submission stored only when it is admitted
+    $accepted ? $response->assertRedirect() : $response->assertNotFound();
+    expect(storedSubmissions())->toBe($accepted ? 1 : 0);
+})->with([
+    'the Spanish site, on a Spanish form' => ['es', 'es', true],
+    'the Spanish site, on an English form' => ['en', 'es', false],
+]);
+
 it('accepts a submit to a form with no sites from every site, as core does', function (string $page): void {
     // Save a global form
     submittableForm(null);

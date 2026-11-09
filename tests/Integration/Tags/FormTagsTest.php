@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Event;
 use Statamic\Events\FormBlueprintFound;
 use Statamic\Exceptions\NotFoundHttpException;
@@ -22,6 +23,7 @@ use Statamic\Tags\FluentTag;
 use Statamic\Tags\Loader;
 use UAMSWeb\Aether\Forms\Multisite\Forms\NotAssigned;
 use UAMSWeb\Aether\Forms\Multisite\Forms\SiteForm;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 use UAMSWeb\Aether\Forms\Multisite\Tags\FormTags;
 
 /**
@@ -208,6 +210,15 @@ it('renders an assigned form, or one with no sites, as core renders it', functio
     Blink::flush();
     $core = coreFormTag($params)->create();
 
+    // Ours adds one parameter to core's: the page's site, signed
+    $ours = rendered($ours);
+    $params = $ours['params'] ?? null;
+    $params = is_array($params) ? $params : [];
+    $signed = $params[RequestSite::FIELD] ?? null;
+    expect($signed)->toBeString()
+        ->and(Crypt::decryptString(is_string($signed) ? $signed : ''))->toBe('en');
+    $ours['params'] = array_diff_key($params, [RequestSite::FIELD => true]);
+
     // With no parser, core's create returns the data a template would receive
     expect(rendered($ours))->toEqual(rendered($core))
         ->and(data_get(rendered($ours), 'fields.0.field'))->toContain('name="name"')
@@ -263,6 +274,22 @@ it('returns the HTML core renders from create with a parser for an assigned form
 
     // Expect create to render a form element
     expect(formTag('create', parsed: true)->create())->toContain('<form');
+});
+
+it("carries the page's site in a signed hidden field, rendered and fetched", function (): void {
+    // Save a form on both sites and render on the Spanish one
+    taggedForm(['en', 'es']);
+    Site::setCurrent('es');
+
+    // Expect the rendered form to carry the field, right after its opening tag
+    $html = formTag('create', parsed: true)->create();
+    expect(preg_match('/<form[^>]*>.*?<input type="hidden" name="_site" value="([^"]+)" \/>/s', $html, $match))->toBe(1)
+        ->and(Crypt::decryptString(html_entity_decode($match[1] ?? '')))->toBe('es');
+
+    // Expect the fetched data to carry it among core's parameters
+    $signed = data_get(rendered(formTag('create')->create()), 'params.'.RequestSite::FIELD);
+    expect($signed)->toBeString()
+        ->and(Crypt::decryptString(is_string($signed) ? $signed : ''))->toBe('es');
 });
 
 it('returns the submission core flashed for an assigned form, and nothing before a submit', function (): void {

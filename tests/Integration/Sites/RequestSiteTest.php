@@ -2,13 +2,16 @@
 
 declare(strict_types=1);
 
+use Illuminate\Log\Events\MessageLogged;
+use Illuminate\Support\Facades\Event;
 use Statamic\Facades\Site;
 use Statamic\Sites\Site as SiteObject;
 use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 
 /**
- * The submit site is core's own rule: the site the referrer falls under, else
- * the default site (#71).
+ * The submit site is the one the form tag's signed field names; without the
+ * field it is core's own rule: the site the referrer falls under, else the
+ * default site (#71).
  *
  * @command  vendor/bin/pest tests/Integration/Sites/RequestSiteTest.php
  */
@@ -43,6 +46,46 @@ it('falls back to the default site for a referrer on no site', function (): void
     // Expect the default site
     expect((new RequestSite)->forSubmission()->handle())->toBe('en');
 });
+
+it('prefers the signed site the form carried over the referrer', function (): void {
+    // Submit from an English page, carrying the Spanish site the form was rendered on
+    request()->headers->set('referer', 'http://localhost/contact');
+    request()->merge([RequestSite::FIELD => RequestSite::sign(configuredSite('es'))]);
+
+    // Expect the signed site
+    expect((new RequestSite)->forSubmission()->handle())->toBe('es');
+});
+
+it('rejects a site field whose signature fails, warns, and lets the referrer decide', function (string $value): void {
+    // Collect the warnings logged
+    $warnings = [];
+    Event::listen(MessageLogged::class, function (MessageLogged $event) use (&$warnings): void {
+        $warnings[] = $event->level.': '.$event->message;
+    });
+
+    // Submit from a Spanish page, carrying an English site nobody signed
+    request()->headers->set('referer', 'http://localhost/es/contacto');
+    request()->merge([RequestSite::FIELD => $value]);
+
+    // Expect the referrer's site, and one warning
+    expect((new RequestSite)->forSubmission()->handle())->toBe('es')
+        ->and($warnings)->toBe(['warning: Multisite Forms rejected a submit site whose signature failed; the referrer decides the site.']);
+})->with([
+    'a bare handle' => ['en'],
+    'a tampered signature' => [fn (): string => strrev(RequestSite::sign('en'))],
+]);
+
+it('lets the referrer decide for a signed site that is no longer configured, and for an empty field', function (string $value): void {
+    // Submit from a Spanish page
+    request()->headers->set('referer', 'http://localhost/es/contacto');
+    request()->merge([RequestSite::FIELD => $value]);
+
+    // Expect the referrer's site
+    expect((new RequestSite)->forSubmission()->handle())->toBe('es');
+})->with([
+    'a site removed since' => [fn (): string => RequestSite::sign('fr')],
+    'an empty field' => [''],
+]);
 
 it('names the current site for a page render', function (): void {
     // Render the page on the Spanish site
