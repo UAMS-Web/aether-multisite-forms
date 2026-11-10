@@ -561,3 +561,12 @@ The adversarial review of this change found an older gap in the id rule, reprodu
 
 **Companion.** `UAMS-Web/uams-claude-skills#292`, `#291`, `#296`.
 
+## 2026-11-10: The `pest-plugin-mutate` patches come from the shared `uams-web/patches-pest-plugin-mutate` package (#243)
+
+**Decision.** `composer.json` requires `uams-web/patches-pest-plugin-mutate` `^1.0` in `require-dev`, and the root `patches.json` lists the package's seven patches by `vendor/uams-web/patches-pest-plugin-mutate/patches/` path in the package's order. The `patches/` directory and this repository's copies are removed. The package form stays: the file is root-only, so nothing reaches this add-on's consumers.
+
+**Why.** Thirteen repositories carried the same seven patches as copies, and two had drifted into three and four versions (`UAMS-Web/uams-claude-skills#548`). With the package, a patch changes and retires in one release. The `windows-filter-length` copy here was an earlier revision of the package's, which also widens a filter PCRE cannot compile on every platform and gives a widened child a longer time limit.
+
+**Rejected.** Keeping the copies: they drift, and each retirement would stay one pull request per repository. Moving to `extra.patches` in the package alone: this add-on is installed by other repositories, and the plugin would apply the patches inside their trees.
+
+**Companion.** `UAMS-Web/uams-claude-skills#548`, `#643`.
