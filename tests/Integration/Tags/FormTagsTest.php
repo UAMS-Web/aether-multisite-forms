@@ -214,6 +214,7 @@ it('renders an assigned form, or one with no sites, as core renders it', functio
     $ours = rendered($ours);
     $params = $ours['params'] ?? null;
     $params = is_array($params) ? $params : [];
+
     $signed = $params[RequestSite::FIELD] ?? null;
     expect($signed)->toBeString()
         ->and(Crypt::decryptString(is_string($signed) ? $signed : ''))->toBe('en');
