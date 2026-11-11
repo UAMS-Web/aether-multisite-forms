@@ -136,7 +136,12 @@ final class SubmissionScope
     public static function apply(SubmissionQueryBuilder $builder): SubmissionQueryBuilder
     {
         // Skip the scope's own reads, a form delete, and non-Control Panel requests
-        if (self::$reading || request()->attributes->get(self::DELETING) === true || ! self::isControlPanelRequest()) {
+        // Negating the condition makes the scope's own reads re-enter it without bound.
+        // Run by hand, SubmissionScopeTest fails with "Maximum call stack size reached" only
+        // after 87 s, and the process then outlives 300 s, so a run can report a timeout
+        // for it and never a kill. The marker shares the line it ignores because an annotation
+        // above an if statement suppresses only the statements inside it.
+        if (self::$reading || request()->attributes->get(self::DELETING) === true || ! self::isControlPanelRequest()) { // @pest-mutate-ignore: IfNegated
             return $builder;
         }
 
