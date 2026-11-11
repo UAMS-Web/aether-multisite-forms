@@ -174,6 +174,49 @@ class FormTags extends Tags
     }
 
     /**
+     * Core's opening tag followed by the signed site field, so a submit names
+     * the page's site whether or not the browser sends a referrer.
+     *
+     * @param  string  $action  The form's action URL.
+     * @param  string  $method  The form's method.
+     * @param  list<string>  $knownTagParams  Tag parameters not rendered as attributes.
+     * @param  array<string, mixed>  $additionalAttrs  Attributes added to the form element.
+     * @return string The opening tag and its hidden fields.
+     */
+    protected function formOpen($action, $method = 'POST', $knownTagParams = [], $additionalAttrs = [])
+    {
+        return parent::formOpen($action, $method, $knownTagParams, $additionalAttrs)
+            .sprintf('<input type="hidden" name="%s" value="%s" />', RequestSite::FIELD, e($this->signedSite()));
+    }
+
+    /**
+     * Core's hidden parameters with the signed site added, for a form fetched
+     * with no parser, whose template renders the parameters itself.
+     *
+     * @param  string  $method  The form's method.
+     * @param  array<string, mixed>  $params  Core's parameters so far.
+     * @return array<string, mixed> The parameters, with the site.
+     */
+    protected function formParams($method, $params = [])
+    {
+        // Core prefixes each key with an underscore when it renders them. Core's
+        // formParams() always returns an array, so the cast only narrows its
+        // undeclared return type for PHPStan and removing it changes nothing.
+        // @pest-mutate-ignore: RemoveArrayCast
+        return array_merge((array) parent::formParams($method, $params), [ltrim(RequestSite::FIELD, '_') => $this->signedSite()]);
+    }
+
+    /**
+     * The page's site, signed for the hidden field.
+     *
+     * @return string The signed site handle.
+     */
+    private function signedSite(): string
+    {
+        return RequestSite::sign(app(RequestSite::class)->forPage());
+    }
+
+    /**
      * The form for the page's site: the site's read-only view, or null when the
      * form is unassigned or missing.
      *

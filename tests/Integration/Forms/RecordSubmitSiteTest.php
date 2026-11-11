@@ -15,6 +15,7 @@ use Statamic\Forms\Form;
 use Statamic\Forms\SendEmails;
 use Statamic\Stache\Stores\Store;
 use UAMSWeb\Aether\Forms\Multisite\Forms\RecordSubmitSite;
+use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
 /**
@@ -107,7 +108,7 @@ it('records the submit site on a stored submission', function (string $page, str
     'from the es site' => ['http://localhost/es/contacto', 'es'],
 ]);
 
-it('ignores a _site value in the request', function (): void {
+it('ignores a _site value in the request that the form tag did not sign', function (): void {
     // Save the form
     feedbackForm();
 
@@ -116,6 +117,17 @@ it('ignores a _site value in the request', function (): void {
 
     // Expect the English site recorded
     expect(storedFeedback()[0]->get(RecordSubmitSite::KEY))->toBe('en');
+});
+
+it('records the signed site the form carried, whatever page the referrer names', function (): void {
+    // Save the form
+    feedbackForm();
+
+    // Submit from an English page, carrying the Spanish site the form was rendered on
+    postFeedback($this, 'http://localhost/contact', [RequestSite::FIELD => RequestSite::sign('es')]);
+
+    // Expect the Spanish site recorded
+    expect(storedFeedback()[0]->get(RecordSubmitSite::KEY))->toBe('es');
 });
 
 it('records the site on the submission the email job receives, when submissions are not stored', function (): void {
