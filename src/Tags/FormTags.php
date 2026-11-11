@@ -199,7 +199,10 @@ class FormTags extends Tags
      */
     protected function formParams($method, $params = [])
     {
-        // Core prefixes each key with an underscore when it renders them
+        // Core prefixes each key with an underscore when it renders them. Core's
+        // formParams() always returns an array, so the cast only narrows its
+        // undeclared return type for PHPStan and removing it changes nothing.
+        // @pest-mutate-ignore: RemoveArrayCast
         return array_merge((array) parent::formParams($method, $params), [ltrim(RequestSite::FIELD, '_') => $this->signedSite()]);
     }
 

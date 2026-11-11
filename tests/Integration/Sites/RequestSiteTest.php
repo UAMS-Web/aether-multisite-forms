@@ -87,6 +87,28 @@ it('lets the referrer decide for a signed site that is no longer configured, and
     'an empty field' => [''],
 ]);
 
+it('leaves a missing, empty or non-string site field to the referrer without a warning', function (mixed $value): void {
+    // Collect the warnings logged
+    $warnings = [];
+    Event::listen(MessageLogged::class, function (MessageLogged $event) use (&$warnings): void {
+        $warnings[] = $event->level.': '.$event->message;
+    });
+
+    // Submit from a Spanish page, with the field absent or carrying no signed value
+    request()->headers->set('referer', 'http://localhost/es/contacto');
+    if ($value !== null) {
+        request()->merge([RequestSite::FIELD => $value]);
+    }
+
+    // Expect the referrer's site, and no signature check to have run
+    expect((new RequestSite)->forSubmission()->handle())->toBe('es')
+        ->and($warnings)->toBe([]);
+})->with([
+    'no field' => [null],
+    'an empty field' => [''],
+    'an array field' => [['en']],
+]);
+
 it('names the current site for a page render', function (): void {
     // Render the page on the Spanish site
     Site::setCurrent('es');

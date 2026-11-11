@@ -122,6 +122,10 @@ final class RequestSite
         // Accept only a site that is still configured
         $site = SiteFacade::get($handle);
 
+        // The facade answers null for a handle that is not configured, so the
+        // check only narrows its untyped answer for PHPStan: replacing it with
+        // true returns the same null, and the mutant cannot be killed.
+        // @pest-mutate-ignore: InstanceOfToTrue
         return $site instanceof Site ? $site : null;
     }
 
