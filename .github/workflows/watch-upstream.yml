@@ -1,7 +1,7 @@
 name: Watch upstream fixes
 
 # A scheduled watch on the upstream fixes this repository is waiting on, for example the
-# `pestphp/pest-plugin-mutate` defects the files in `patches/` work around. For each
+# `pestphp/pest-plugin-mutate` defects the patches listed in `patches.json` work around. For each
 # (tracking issue -> upstream issue or pull request) row in `.github/upstream-watches/` it runs the
 # check a person would: has the maintainer acted (issue closed, pull request merged or closed), and,
 # where a local patch is carried, has a fixed release shipped to Packagist past the version
@@ -172,7 +172,7 @@ jobs:
               fi
 
               # Signal B - a Packagist release past what we have installed (rows naming a package only).
-              # This is the condition that retires the local patch in `patches/`, so it earns its own
+              # This is the condition that retires the local patch listed in `patches.json`, so it earns its own
               # notification even when the PR has not visibly moved: a maintainer can land an equivalent
               # fix without ever touching our PR.
               if [ -n "$composer" ]; then
@@ -190,7 +190,7 @@ jobs:
                     if printf '%s' "$existing" | grep -qF "$s"; then
                       echo "Already notified for $composer $latest - skipping."
                     else
-                      new_reasons="${new_reasons}- Packagist published \`$composer\` **$latest**, past our installed **$pin** - check whether it carries the fix and retires \`patches/\`.\n"
+                      new_reasons="${new_reasons}- Packagist published \`$composer\` **$latest**, past our installed **$pin** - check whether it carries the fix and retires the patch listed in \`patches.json\`.\n"
                       new_sentinels="${new_sentinels}${s}"
                     fi
                   fi
