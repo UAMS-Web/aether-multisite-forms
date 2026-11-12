@@ -1,5 +1,5 @@
 {
-    "_hash": "bd4762eedc867ca9af1840f3040de53a2e7401258a71eeae77bf03fa3e54ad41",
+    "_hash": "5470c8a69e71c720a0efc6b67e9522a22f84e41cb38a65086a2a39439d938eea",
     "patches": {
         "pestphp/pest-plugin-mutate": [
             {
@@ -67,6 +67,18 @@
                 "description": "Drop the parallel runner's options (--passthru-php, --processes and the rest) from each mutant child so a parallel run given one cannot score every mutant killed (temporary; see #2926, #2947)",
                 "url": "vendor/uams-web/patches-pest-plugin-mutate/patches/pest-plugin-mutate-drop-parallel-runner-options.patch",
                 "sha256": "b999bc57c3eb43da339e37e7781f3f1d479481dc6f82c5b388775f1083b5043c",
+                "depth": 1,
+                "extra": {
+                    "provenance": "patches-file:patches.json"
+                }
+            }
+        ],
+        "orchestra/testbench-core": [
+            {
+                "package": "orchestra/testbench-core",
+                "description": "Give each parallel test worker its own service manifest (temporary; see UAMS-Web/patches-orchestra-testbench-core#1)",
+                "url": "vendor/uams-web/patches-orchestra-testbench-core/patches/testbench-parallel-services-manifest.patch",
+                "sha256": "0b2c164aa2bf3a27c69db0e3c067f001479324e409035ffeb9a1fee36eb03be1",
                 "depth": 1,
                 "extra": {
                     "provenance": "patches-file:patches.json"
