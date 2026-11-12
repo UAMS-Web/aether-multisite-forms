@@ -35,7 +35,11 @@ final class EmailRecordedSite
      */
     public static function register(DispatcherContract $bus): void
     {
-        // Leave a bus that is not the framework's, which has no pipes to extend
+        // Leave a bus that is not the framework's, which has no pipes to extend.
+        // The InstanceOfToTrue mutant is killed on macOS (the test with a mocked
+        // bus fails) but reported untested on the Linux PCOV job (#258), so it is
+        // annotated rather than left to a driver-dependent result.
+        // @pest-mutate-ignore: InstanceOfToTrue
         if (! $bus instanceof Dispatcher) {
             return;
         }
