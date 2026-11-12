@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace UAMSWeb\Aether\Forms\Multisite;
 
+use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
@@ -16,6 +17,7 @@ use UAMSWeb\Aether\Forms\Multisite\Access\FormGate;
 use UAMSWeb\Aether\Forms\Multisite\Access\SubmissionScope;
 use UAMSWeb\Aether\Forms\Multisite\Api\FormsController;
 use UAMSWeb\Aether\Forms\Multisite\Forms\ConfigFields;
+use UAMSWeb\Aether\Forms\Multisite\Forms\EmailRecordedSite;
 use UAMSWeb\Aether\Forms\Multisite\Forms\NotAssigned;
 use UAMSWeb\Aether\Forms\Multisite\Forms\RecordSubmitSite;
 use UAMSWeb\Aether\Forms\Multisite\GraphQL\FormsQuery;
@@ -33,7 +35,7 @@ use UAMSWeb\Aether\Forms\Multisite\Http\SubmitGate;
  * the Control Panel and on its form fields editor, that editor's breadcrumb, the
  * blueprints index and the command palette, the site filter on the REST and
  * GraphQL form listings, the gate on core's form submit route, the listener that
- * records a submission's site, and the one that assigns a new form to its
+ * records a submission's site, the bus pipe that emails for it, and the one that assigns a new form to its
  * creator's sites. Its actions, such as the Duplicate
  * action that replaces core's, are registered from `src/Actions` by Statamic;
  * the rest is added as the phases in the add-on's specification land.
@@ -89,6 +91,9 @@ class ServiceProvider extends AddonServiceProvider
         // Record the site a submission was made on
         Event::listen(FormSubmitted::class, [RecordSubmitSite::class, 'submitted']);
         Event::listen(SubmissionCreating::class, [RecordSubmitSite::class, 'creating']);
+
+        // Send a submission's email for the site it was recorded under
+        EmailRecordedSite::register($this->app->make(Dispatcher::class));
 
         // Assign a new form to its creator's sites
         Event::listen(FormCreating::class, CreatorSites::creating(...));

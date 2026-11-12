@@ -21,8 +21,8 @@ use Statamic\Sites\Site;
  * names that site; a field whose signature fails is rejected, with a warning.
  * Without a field the rule is core's own expression from
  * `FormController::submit()`: the site the referrer falls under, else the
- * default, so a form rendered any other way submits as it did. Core's email
- * job still reads the referrer, so the two agree whenever a browser sends it.
+ * default, so a form rendered any other way submits as it did. The email job
+ * takes the recorded site, so the email follows it too.
  */
 final class RequestSite
 {
