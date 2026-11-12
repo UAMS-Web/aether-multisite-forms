@@ -20,7 +20,7 @@ Add one file named `<tracker>-<owner>-<repo>-<number>.json`, holding one object:
 
 - `tracker` is the issue in this repository that records the work; closing it ends the watch.
 - `repo`, `kind` (`issue` or `pr`) and `number` name the upstream thread.
-- `composer` is optional: name the package when a local patch in `patches/` depends on it, and the watch also reports a Packagist release past the installed version.
+- `composer` is optional: name the package when a patch listed in `patches.json` depends on it, and the watch also reports a Packagist release past the installed version.
 - `released: true` is optional and only valid on a `pr` row: the watch also reports when a release on the pull request's base-branch line contains the merge commit.
 
 A row earns its place only if a terminal signal would make someone act. Each row also needs a note below, saying why it exists and what its signal changes.
