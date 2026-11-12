@@ -190,7 +190,7 @@ jobs:
                     if printf '%s' "$existing" | grep -qF "$s"; then
                       echo "Already notified for $composer $latest - skipping."
                     else
-                      new_reasons="${new_reasons}- Packagist published \`$composer\` **$latest**, past our installed **$pin** - check whether it carries the fix and retires \`patches/\`.\n"
+                      new_reasons="${new_reasons}- Packagist published \`$composer\` **$latest**, past our installed **$pin** - check whether it carries the fix and retires the patch listed in \`patches.json\`.\n"
                       new_sentinels="${new_sentinels}${s}"
                     fi
                   fi
