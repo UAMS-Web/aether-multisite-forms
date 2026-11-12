@@ -2,14 +2,17 @@
 
 declare(strict_types=1);
 
+use Illuminate\Bus\Dispatcher;
 use Illuminate\Support\Facades\Mail;
+use Mockery\MockInterface;
 use Statamic\Facades\Stache;
 use Statamic\Forms\Email;
 use Statamic\Forms\Form;
 use Statamic\Forms\SendEmail;
+use Statamic\Forms\SendEmails;
 use Statamic\Sites\Site;
 use Statamic\Stache\Stores\Store;
-use UAMSWeb\Aether\Forms\Multisite\Forms\SendSiteEmail;
+use UAMSWeb\Aether\Forms\Multisite\Forms\EmailRecordedSite;
 use UAMSWeb\Aether\Forms\Multisite\Sites\RequestSite;
 use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
 
@@ -17,7 +20,7 @@ use UAMSWeb\Aether\Forms\Multisite\Tests\TestCase;
  * A submission's email is sent for the site it was recorded under, not the
  * site core derives from the referrer (#249).
  *
- * @command  vendor/bin/pest tests/Integration/Forms/SendSiteEmailTest.php
+ * @command  vendor/bin/pest tests/Integration/Forms/EmailRecordedSiteTest.php
  */
 beforeEach(function (): void {
     // Configure two sites and a temporary forms directory for this test
@@ -126,36 +129,81 @@ it("keeps core's site for a submit with no signed field", function (string $page
     'from the es site' => ['http://localhost/es/contacto', 'es'],
 ]);
 
-it("falls back to core's site for a recorded value that names no site", function (mixed $recorded): void {
-    // Build the job for a submission whose recorded value cannot name a site
+/**
+ * The site a `SendEmails` job holds after the pipe has run.
+ *
+ * @param  mixed  $recorded  The value recorded on the submission, or null for none.
+ * @return string The handle of the site the job would build its emails for.
+ */
+function siteAfterPipe(mixed $recorded): string
+{
+    // Build the job as core's route does, for a submission with the given record
     $form = Statamic\Facades\Form::find('mailed');
     $submission = $form instanceof Form ? $form->makeSubmission() : throw new RuntimeException('The form is missing.');
     if ($recorded !== null) {
         $submission->set('_site', $recorded);
     }
 
-    $job = new SendSiteEmail($submission, configuredSite('es'), ['to' => 'a@example.com']);
+    $job = new SendEmails($submission, configuredSite('es'));
 
-    // Expect core's site kept
-    expect(handleOf($job->site))->toBe('es');
+    // Pass it through the pipe and read the site it holds
+    new EmailRecordedSite()->handle($job, fn (mixed $passed): mixed => $passed);
+
+    return handleOf(new ReflectionProperty(SendEmails::class, 'site')->getValue($job));
+}
+
+it('sets the job to the recorded site', function (): void {
+    expect(siteAfterPipe('en'))->toBe('en');
+});
+
+it("falls back to core's site for a recorded value that names no site", function (mixed $recorded): void {
+    expect(siteAfterPipe($recorded))->toBe('es');
 })->with([
     'no recorded site' => [null],
-    'an empty string' => [''],
     'a value that is not a string' => [['en']],
     'a site that is no longer configured' => ['gone'],
 ]);
 
-it("is installed in place of core's job, and leaves a host's own job alone", function (): void {
-    // Expect the add-on's job installed over core's by the boot
-    expect(config('statamic.forms.send_email_job'))->toBe(SendSiteEmail::class);
+it('leaves a job other than SendEmails untouched', function (): void {
+    $job = new stdClass;
 
-    // Reinstalling over a host's own job changes nothing
-    config(['statamic.forms.send_email_job' => 'App\\HostEmailJob']);
-    SendSiteEmail::register();
-    expect(config('statamic.forms.send_email_job'))->toBe('App\\HostEmailJob');
-
-    // Reinstalling over core's job installs the add-on's
-    config(['statamic.forms.send_email_job' => SendEmail::class]);
-    SendSiteEmail::register();
-    expect(config('statamic.forms.send_email_job'))->toBe(SendSiteEmail::class);
+    expect(new EmailRecordedSite()->handle($job, fn (mixed $passed): mixed => $passed))->toBe($job);
 });
+
+it("emails a host's own job class for the recorded site", function (): void {
+    // Configure an email job of the host's own, as an add-on or application may
+    config(['statamic.forms.send_email_job' => HostEmailJob::class]);
+
+    // Submit with the Spanish signed field and no referrer
+    postMailed($this, null, [RequestSite::FIELD => RequestSite::sign('es')]);
+
+    // Expect the email composed for the Spanish site
+    expect(emailedSites())->toBe(['es']);
+});
+
+it("leaves a bus that is not the framework's alone", function (): void {
+    // Expect no pipes set on a bus the add-on cannot extend
+    /** @var Illuminate\Contracts\Bus\Dispatcher&MockInterface $bus */
+    $bus = Mockery::mock(Illuminate\Contracts\Bus\Dispatcher::class);
+    $bus->shouldNotReceive('pipeThrough');
+
+    expect(fn () => EmailRecordedSite::register($bus))->not->toThrow(Throwable::class);
+});
+
+it('is on the bus, after the pipes already set', function (): void {
+    // Add the pipe to a bus that already has one
+    $bus = new Dispatcher(app());
+    $bus->pipeThrough(['HostPipe']);
+    EmailRecordedSite::register($bus);
+
+    // Expect both, the host's first
+    $pipes = new ReflectionProperty(Dispatcher::class, 'pipes')->getValue($bus);
+    expect($pipes)->toBe(['HostPipe', EmailRecordedSite::class]);
+
+    // Expect the application's own bus to carry the pipe already
+    $applied = new ReflectionProperty(Dispatcher::class, 'pipes')->getValue(app(Illuminate\Contracts\Bus\Dispatcher::class));
+    expect($applied)->toContain(EmailRecordedSite::class);
+});
+
+/** A host's email job: a different class from core's, built the same way. */
+final class HostEmailJob extends SendEmail {}
