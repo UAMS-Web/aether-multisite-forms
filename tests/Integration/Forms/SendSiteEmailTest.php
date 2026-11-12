@@ -133,6 +133,7 @@ it("falls back to core's site for a recorded value that names no site", function
     if ($recorded !== null) {
         $submission->set('_site', $recorded);
     }
+
     $job = new SendSiteEmail($submission, configuredSite('es'), ['to' => 'a@example.com']);
 
     // Expect core's site kept
