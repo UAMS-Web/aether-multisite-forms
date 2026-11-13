@@ -1,5 +1,5 @@
 {
-    "_hash": "1c0be749f9c5fd4fbb4d47df8d5417228d2853ae82c2a5612c24fb31ea8fb844",
+    "_hash": "a53a63d0ceb28d06ca18b27137255843cf88c720cdcfc4851820a893f959ff91",
     "patches": {
         "pestphp/pest-plugin-mutate": [
             {
@@ -86,7 +86,7 @@
                 "package": "pestphp/pest-plugin-mutate",
                 "description": "Propagate a mutation into isolated test processes and reject a test report that ran no tests, so an isolated run cannot score a mutant killed without running a test (temporary; see UAMS-Web/UAMSWP-Logo-List#82)",
                 "url": "vendor/uams-web/patches-pest-plugin-mutate/patches/pest-plugin-mutate-isolated-processes.patch",
-                "sha256": "9a221ef2a7a363db405e299a4f4eab83667b39503bc8eac9718c09ce2291c16c",
+                "sha256": "c3ad8886c67831829d58eddf55b52a359c5833d4e8a47012b9c9f224cc192eaa",
                 "depth": 1,
                 "extra": {
                     "provenance": "patches-file:patches.json"
@@ -128,7 +128,7 @@
                 "package": "orchestra/testbench-core",
                 "description": "Give each parallel test worker its own service manifest (temporary; see UAMS-Web/patches-orchestra-testbench-core#1)",
                 "url": "vendor/uams-web/patches-orchestra-testbench-core/patches/testbench-parallel-services-manifest.patch",
-                "sha256": "0b2c164aa2bf3a27c69db0e3c067f001479324e409035ffeb9a1fee36eb03be1",
+                "sha256": "3b11ccf5e85002a2f2255f727806684e764e1c887698c65ebc2266c74e3bff46",
                 "depth": 1,
                 "extra": {
                     "provenance": "patches-file:patches.json"
