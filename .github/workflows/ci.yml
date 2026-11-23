@@ -10,8 +10,9 @@ name: CI
 # - The pinned reference: `uses:` names a tag, never a branch, so a change to the shared chain
 #   reaches this repository only when the tag here moves. Dependabot does not move it.
 # - Inputs: `linux-only: true` keeps every job on `ubuntu-latest`, as this workflow ran before the
-#   call. Dropping it adds Windows and macOS legs to the jobs the chain classifies for all three
-#   platforms (`mutate-ignore`, `mutate`, `pest`); that is a separate decision from this file.
+#   call. Since `v0.17.0` every job runs on `ubuntu-latest` unless the caller names more runners, so
+#   this input states the default; `linux-only: false` adds Windows and macOS legs to the jobs the
+#   chain classifies for all three platforms (`mutate-ignore`, `mutate`, `pest`), a separate decision.
 #   `mutate-paths` is the path the `mutate` job selects changed PHP files from.
 # - What the `mutate` job mutates depends on the event. A pull request and a push to `main` mutate only
 #   the PHP files under `mutate-paths` that the commit adds, changes or renames; a commit that changes
@@ -55,7 +56,7 @@ permissions:
 jobs:
   # The shared chain.
   checks:
-    uses: UAMS-Web/uams-ci-workflows/.github/workflows/ci.yml@v0.13.0
+    uses: UAMS-Web/uams-ci-workflows/.github/workflows/ci.yml@v0.17.0
     with:
       linux-only: true
       mutate-paths: src
