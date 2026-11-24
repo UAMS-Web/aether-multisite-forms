@@ -1,4 +1,4 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 Submissions saved before the add-on was installed record no site, so in the Control Panel they show only to people who can access every site their form is assigned to. When you know which site they came from, record it, and that site's editors see them.
 

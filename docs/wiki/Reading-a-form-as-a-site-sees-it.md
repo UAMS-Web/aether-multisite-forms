@@ -1,4 +1,4 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 `Form::find()` returns the form as it is stored, with every site's override rows and no site's values applied. Code that needs a form as one site sees it, with that site's title, email and storage choice, asks the add-on's `FormResolver`.
 

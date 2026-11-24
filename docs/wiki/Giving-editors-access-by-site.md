@@ -1,4 +1,4 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 An editor who looks after one site should see that site's forms and submissions, and not the others'. The add-on adds no permissions for this: it reads the site access the editor's role already grants.
 

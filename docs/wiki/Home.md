@@ -1,3 +1,5 @@
+Written against v0.8.2.
+
 Multisite Forms makes Statamic forms per-site in a multisite install. A form can be shown on some sites only, give each site its own title, email and storage choice, and keep each site's submissions apart in the Control Panel.
 
 This wiki holds the documentation: a walkthrough, task guides by role, the reference, and troubleshooting. The [README](https://github.com/UAMS-Web/aether-multisite-forms#readme) keeps an overview, the requirements and installation.
@@ -28,6 +30,7 @@ This wiki holds the documentation: a walkthrough, task guides by role, the refer
 - [Configuration](Configuration.md): the `not_assigned` setting, and what the form tags do on a site a form is not assigned to.
 - [Per-site title, email and store](Per-site-title-email-and-store.md): the `site_overrides` rows in a form file.
 - [Control Panel access](Control-Panel-access.md): who sees which forms and submissions, and the Site filter.
+- [Submit site](Submit-site.md): how a submit's site is named, the signed `_site` field, and the email's site.
 - [Attribute command](Attribute-command.md): recording a site on older submissions.
 - [API site filter](API-site-filter.md): the `site` filter on the REST and GraphQL form listings.
 - [Form assigned tag](Form-assigned-tag.md): `form:assigned`, for checking a form's site in a template.

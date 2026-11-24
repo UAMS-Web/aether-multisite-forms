@@ -1,3 +1,5 @@
+Written against v0.8.2.
+
 `form:assigned` answers whether a form renders on the page's site, so a template can hide what surrounds it, such as a heading or an introduction.
 
 | Form | Result |

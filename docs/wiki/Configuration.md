@@ -1,3 +1,5 @@
+Written against v0.8.2.
+
 The add-on has one setting, `not_assigned`. Publish the config file to change it:
 
 ```sh
@@ -25,7 +27,7 @@ The setting is checked each time the add-on boots, for every request and `artisa
 
 A form assigned to the page's site, and a form with no sites, render as Statamic renders them. A submit to a form from a site it is not assigned to always answers 404, whatever `not_assigned` says.
 
-A submit's site is the site whose URL the request's referrer falls under, or the default site when there is none, the same rule Statamic uses to choose a submission's email locale. That site decides the 404, the site recorded on the submission, and the site's overrides. The referrer is sent by the browser, so this decides which forms a site offers and accepts; it does not stop someone who crafts a request from submitting as any site the form is assigned to.
+A submit's site is the one the form tag's signed `_site` field names, else the site whose URL the request's referrer falls under, else the default site. That site decides the 404, the site recorded on the submission, the site's overrides and the site the email is sent for. See [Submit site](Submit-site.md) for the rule, the field and its limits.
 
 ### Fetching `form:create` without a template
 

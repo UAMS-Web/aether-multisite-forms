@@ -27,6 +27,7 @@
 - [Configuration](Configuration.md)
 - [Per-site title, email and store](Per-site-title-email-and-store.md)
 - [Control Panel access](Control-Panel-access.md)
+- [Submit site](Submit-site.md)
 - [Attribute command](Attribute-command.md)
 - [API site filter](API-site-filter.md)
 - [Form assigned tag](Form-assigned-tag.md)

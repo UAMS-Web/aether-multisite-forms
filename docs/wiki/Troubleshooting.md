@@ -1,10 +1,11 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 One entry per symptom, as you meet it: the message or behavior, its cause, and the fix.
 
 - [A form does not show on one site](#a-form-does-not-show-on-one-site)
 - [A page answers 404 on one site](#a-page-answers-404-on-one-site)
 - [A form submit answers 404](#a-form-submit-answers-404)
+- [A submit site signature fails](#a-submit-site-signature-fails)
 - [The not_assigned setting must be "empty" or "404"](#the-not_assigned-setting-must-be-empty-or-404)
 - [Multisite Forms could not gate form submits by site](#multisite-forms-could-not-gate-form-submits-by-site)
 - [Saving a form's Sites is refused](#saving-a-forms-sites-is-refused)
@@ -42,6 +43,20 @@ A submit from one site answers 404 while the same form submits from another. The
 **Cause:** the form is not assigned to the site the submit came from. This holds whatever `not_assigned` says.
 
 **Fix:** add the site to the form's **Sites** field.
+
+## A submit site signature fails
+
+The log holds:
+
+```text
+local.WARNING: Multisite Forms rejected a submit site whose signature failed; the referrer decides the site.
+```
+
+The submit still goes through, recorded under the site its referrer names, or the default site when there is none.
+
+**Cause:** the `_site` field the form tag adds did not decrypt. It was edited, written by hand, or made under another `APP_KEY`, such as a page cached before the key changed.
+
+**Fix:** none needed for a stray request. If real visitors trigger it, clear the cached page so the form tag renders again under the current key. See [Submit site](Submit-site.md#the-signed-field).
 
 ## The not_assigned setting must be "empty" or "404"
 
@@ -158,4 +173,10 @@ Cannot scope submissions by site: the bound submission query builder [App\Forms\
 
 ## Fixed
 
-No problem has been fixed in a release yet. When one is, its entry moves here with the release that fixed it.
+### A submit's site came from the referrer alone
+
+Fixed in v0.8.0. A browser that sent no referrer had every submission recorded under the default site, and a crafted request could name any site the form was assigned to by choosing its referrer. The form tag now carries the page's site in a signed field. See [Submit site](Submit-site.md).
+
+### An email followed the referrer's site
+
+Fixed in v0.8.0. A submission's email was built for the site the referrer fell under, which could differ from the site recorded on the submission. It now follows the recorded site.

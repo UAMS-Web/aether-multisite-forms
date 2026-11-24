@@ -1,4 +1,4 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 A form with no sites shows on every site. To show it on some sites only, assign it to those sites; the others then render the page without it.
 

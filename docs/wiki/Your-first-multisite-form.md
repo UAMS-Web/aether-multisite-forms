@@ -1,4 +1,4 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 By the end of this page you will have a contact form that shows on one site, then on two, with each site's submissions stored apart and each site's email going to its own recipient.
 
