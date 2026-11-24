@@ -1,3 +1,5 @@
+Written against v0.8.2.
+
 A form shared by several sites can differ on each for three settings. Each site that differs gets one row under `site_overrides` in the form file; a site without a row, and any setting a row leaves out, uses the form's own value.
 
 | Row key | Type | Effect |

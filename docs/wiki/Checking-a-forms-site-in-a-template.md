@@ -1,4 +1,4 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 A form assigned to some sites renders nothing on the others, but the heading or introduction around it still renders. The `form:assigned` tag tells a template whether the form renders on the page's site, so it can hide those, or show something else in their place.
 

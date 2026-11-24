@@ -1,4 +1,4 @@
-Written against v0.6.1.
+Written against v0.8.2.
 
 A form shared by several sites can have a different title, email and storage choice on each. Add a row for each site that differs; a site without a row uses the form's own settings.
 
@@ -47,6 +47,8 @@ With the file above:
 - A submission from the English site is emailed to `info@example.com` and stored.
 
 **Note:** a row's email list replaces the form's list on that site rather than adding to it. To keep sending to the form's recipients from that site, list them in the row too.
+
+The email is built for the site recorded on the submission, so its locale and the site globals it reads follow that site; see [Submit site](Submit-site.md#email).
 
 ## Show the site's title
 

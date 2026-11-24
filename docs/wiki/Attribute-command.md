@@ -1,3 +1,5 @@
+Written against v0.8.2.
+
 `multisite-forms:attribute` records a site on a form's submissions that have none. A submission with no recorded site, such as one saved before the add-on was installed or by code that saves a submission itself, shows in the Control Panel only to users who can access every site its form is assigned to (see [Control Panel access](Control-Panel-access.md)). Recording a site shows it to that site's editors.
 
 ```sh
